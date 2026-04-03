@@ -1,6 +1,6 @@
 package controllers;
 
-import db.DataBase;
+import db.*;
 import entities.Estimate;
 import entities.Offer;
 import entities.Product;
@@ -12,6 +12,7 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class Controller {
@@ -25,13 +26,24 @@ public class Controller {
     private Scene mainScene;
     private AppScene appScene;
 
+    private DataBase db;
+    private UserService  userService;
+    private OfferService offerService;
+    private ProductService productService;
+    private EstimateService estimateService;
+
     public Controller(Stage stage) {
-        this.stage = stage;
         try {
             this.dataBase = new DataBase("", "", "");
         } catch (Exception e) {
             // TODO
         }
+        userService = new UserService(db);
+        offerService = new OfferService(db);
+        productService = new ProductService(db);
+        estimateService = new EstimateService(db);
+
+        this.stage = stage;
         changeScene(SceneName.LOGIN);
     }
 
@@ -45,29 +57,54 @@ public class Controller {
         return RegisterStatus.REGISTERED;
     }
 
-    public List<User> getUsers() {
-        // TODO
-        return null;
+    public List<User> getUsers() throws SQLException {
+        List<User> users = null;
+        try {
+            users = userService.get();
+        } catch (Exception e) {
+            // TODO
+        }
+        return users;
     }
 
     public User findUserByUsername(String username) {
-        // TODO
-        return null;
+        User user = null;
+        try {
+            user = userService.findByUsername(username);
+        } catch (SQLException e) {
+            // TODO
+        }
+        return user;
     }
 
     public User findUserById(int id) {
-        // TODO
-        return null;
+        User user = null;
+        try {
+            user = userService.findById(id);
+        } catch (SQLException e) {
+            // TODO
+        }
+        return user;
     }
 
     public List<Product> getProducts() {
-        // TODO
-        return null;
+        List<Product> products = null;
+        try {
+            products = productService.get();
+        } catch (SQLException e) {
+            // TODO
+        }
+        return products;
     }
 
     public Product findProductById(int id) {
-        // TODO
-        return null;
+        Product product = null;
+        try {
+            product = productService.findById(id);
+        } catch (SQLException e) {
+            // TODO
+        }
+        return product;
     }
 
     public Product findProductByName(String name) {
@@ -88,6 +125,22 @@ public class Controller {
     public List<Product> findProductsByCategory(String category) {
         // TODO
         return null;
+    }
+
+    public void updateProduct(int productId, String titre, String description, String etat, String categorie) {
+        try {
+            productService.update(productId, titre, description, etat, categorie);
+        } catch (SQLException e) {
+            // TODO
+        }
+    }
+
+    public void deleteProduct(int id) {
+        try {
+            productService.delete(id);
+        } catch (SQLException e) {
+            // TODO
+        }
     }
 
 

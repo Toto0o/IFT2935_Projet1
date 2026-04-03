@@ -4,23 +4,23 @@ import status.EstimateStatus;
 
 public class Estimate extends Entity {
 
-    private User expert;
-    private Product product;
+    private int expertId;
+    private int productId;
     private int estimate;
     private EstimateStatus status;
 
-    public Estimate(int id, User expert, int estimate, Product product) {
+    public Estimate(int id, int expertId, int estimate, int productId) {
         super(id);
-        this.expert = expert;
+        this.expertId = expertId;
         this.estimate = estimate;
-        this.product = product;
+        this.productId = productId;
         this.status = EstimateStatus.NO_ESTIMATE;
     }
-    public User getExpert() {
-        return expert;
+    public int getExpertId() {
+        return expertId;
     }
-    public void setExpert(User expert) {
-        this.expert = expert;
+    public void setExpertId(int expertId) {
+        this.expertId = expertId;
     }
     public int getEstimate() {
         return estimate;
@@ -28,11 +28,11 @@ public class Estimate extends Entity {
     public void setEstimate(int estimate) {
         this.estimate = estimate;
     }
-    public Product getProduct() {
-        return product;
+    public int getProductId() {
+        return productId;
     }
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
     public EstimateStatus getStatus() {
         return status;

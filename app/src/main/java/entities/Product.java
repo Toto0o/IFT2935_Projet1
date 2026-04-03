@@ -3,26 +3,29 @@ package entities;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Product extends Entity {
 
     private String titre, description, etat, categorie;
     private int id;
-    private User owner;
-    private Estimate estimate;
-    private Offer offer;
+    private int ownerId;
+    private int estimateId;
+    private int offerId;
 
-    public Product(int id, String name, String etat, String categorie, String description, User owner) {
+    public Product(int id, String titre, String description, String etat, String categorie, int ownerId) {
         super(id);
-        this.titre = name;
+        this.titre = titre;
         this.description = description;
         this.etat = etat;
         this.categorie = categorie;
-        this.owner = owner;
-        this.estimate = null;
-        this.offer = null;
+        this.ownerId = ownerId;
     }
 
     public String getTitre() {
@@ -49,71 +52,36 @@ public class Product extends Entity {
         this.etat = etat;
     }
 
-    public User getOwner() {
-        return owner;
+    public int getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
     }
 
-    public Estimate getEstimate() {
-        return estimate;
+    public int getEstimateId() {
+        return estimateId;
     }
 
-    public void setEstimate(Estimate estimate) {
-        this.estimate = estimate;
+    public void setEstimateId(int estimateId) {
+        this.estimateId = estimateId;
     }
 
-    public Offer getOffer() {
-        return offer;
+    public int getOfferId() {
+        return offerId;
     }
 
-    public void setOffer(Offer offer) {
-        this.offer = offer;
+    public void setOfferId(int offerId) {
+        this.offerId = offerId;
     }
 
-    public VBox draw(boolean showEstimate) {
-        VBox vBox = new VBox();
+    public String getCategorie() {
+        return categorie;
+    }
 
-        Text txtTitre = new Text(this.titre);
-        TextField tfTitre = new TextField();
-        tfTitre.setId("tfTitre");
-        Label lblTitre = new Label("Titre");
-
-        Text txtDescription = new Text(this.description);
-        TextField tfDescription = new TextField();
-        tfDescription.setId("tfDescription");
-        Label lblDescription = new Label("Description");
-
-        Text txtEtat = new Text(this.etat);
-        TextField tfEtat = new TextField();
-        tfEtat.setId("tdEtat");
-        Label lblEtat = new Label("État");
-
-        Text txtEstimate = new Text(this.estimate.getEstimate() + " $");
-        Label lblEstimate = new Label("Estimation");
-        txtEstimate.setVisible(showEstimate);
-        lblEstimate.setVisible(showEstimate);
-
-        Text txtCategorie = new Text(this.categorie);
-        TextField tfCategorie = new TextField();
-        tfCategorie.setId("tfCategorie");
-        Label lblCategorie = new Label("Catégorie");
-
-        Button btnEdit = new Button("Modifier");
-        Button btnClose = new Button("x");
-        Button btnSave = new Button("Enregistrer");
-
-        vBox.getChildren().addAll(
-                lblTitre, txtTitre,
-                lblDescription, txtDescription,
-                lblEstimate, txtEstimate,
-                lblCategorie, txtCategorie
-        );
-
-
-        return vBox;
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
     }
 }
 

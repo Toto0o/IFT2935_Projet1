@@ -7,7 +7,6 @@
     <groupId>ca.umontreal.kijijiapp</groupId>
     <artifactId>kijiji-app</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <titre>Kijiji App</titre>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

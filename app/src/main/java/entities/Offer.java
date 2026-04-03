@@ -5,15 +5,15 @@ import status.OfferStatus;
 public class Offer extends Entity {
 
     private int price;
-    private Product product;
-    private User buyer;
+    private int productId;
+    private int buyerId;
     private OfferStatus status;
 
-    public Offer(int id, int price, Product product, User buyer) {
+    public Offer(int id, int price, int productId, int buyerId) {
         super(id);
         this.price = price;
-        this.product = product;
-        this.buyer = buyer;
+        this.productId = productId;
+        this.buyerId = buyerId;
         this.status = OfferStatus.NO_OFFER;
     }
     public int getPrice() {
@@ -22,17 +22,17 @@ public class Offer extends Entity {
     public void setPrice(int price) {
         this.price = price;
     }
-    public Product getProduct() {
-        return product;
+    public int getProductId() {
+        return productId;
     }
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
-    public User getBuyer() {
-        return buyer;
+    public int getBuyerId() {
+        return buyerId;
     }
-    public void setBuyer(User buyer) {
-        this.buyer = buyer;
+    public void setBuyer(int buyerId) {
+        this.buyerId = buyerId;
     }
     public OfferStatus getStatus() {
         return status;

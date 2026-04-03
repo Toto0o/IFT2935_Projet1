@@ -17,25 +17,13 @@ public class DataBase {
         }
     }
 
+    public Connection getCon() {
+        return con;
+    }
+
     public void close() throws SQLException {
         try {
             this.con.close();
-        } catch (Exception e) {
-            // TODO
-        }
-    }
-
-    public void prepareStatement(String sql) throws SQLException {
-        if (con != null) {
-            // TODO
-        }
-        if (sql != null) {
-            // TODO
-        }
-        try {
-            Statement stmt = this.con.createStatement();
-            stmt.executeUpdate(sql);
-            stmt.close();
         } catch (Exception e) {
             // TODO
         }
