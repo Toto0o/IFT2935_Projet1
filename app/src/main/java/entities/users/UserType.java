@@ -20,7 +20,7 @@ public enum UserType {
         return getDisplayName();
     }
 
-    public UserType getUserType(String type) {
+    public static UserType getUserType(String type) {
         UserType ut = null;
         for (UserType userType : UserType.values()) {
             if (userType.toString().equals(type)) {

@@ -32,6 +32,7 @@ public class OfferService {
                 Offer currentOffer = new Offer(
                         rs.getInt("id"),
                         rs.getInt("price"),
+                        rs.getString("message"),
                         rs.getInt("productId"),
                         rs.getInt("buyerId")
                 );
@@ -57,6 +58,7 @@ public class OfferService {
             offer = new Offer(
                     rs.getInt("id"),
                     rs.getInt("price"),
+                    rs.getString("message"),
                     rs.getInt("productId"),
                     rs.getInt("buyerId")
             );

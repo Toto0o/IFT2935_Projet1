@@ -1,6 +1,7 @@
 package db;
 
 import entities.users.User;
+import entities.users.UserType;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +29,8 @@ public class UserService {
             while (rs.next()) {
                 User currentUser = new User(
                         rs.getInt("id"),
-                        rs.getString("username")
+                        rs.getString("username"),
+                        UserType.getUserType(rs.getString("type"))
                 );
                 users.add(currentUser);
             }
@@ -50,7 +52,8 @@ public class UserService {
             rs = stmt.executeQuery();
             user = new User(
                     rs.getInt("id"),
-                    rs.getString("username")
+                    rs.getString("username"),
+                    UserType.getUserType(rs.getString("type"))
             );
         } catch (SQLException e) {
             // TODO
@@ -70,7 +73,8 @@ public class UserService {
             rs = stmt.executeQuery();
             user = new User(
                     rs.getInt("id"),
-                    rs.getString("username")
+                    rs.getString("username"),
+                    UserType.getUserType(rs.getString("type"))
             );
         } catch (SQLException e) {
             // TODO
