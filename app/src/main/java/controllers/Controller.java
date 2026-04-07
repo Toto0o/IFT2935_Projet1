@@ -1,11 +1,13 @@
 package controllers;
 
 import db.*;
-import entities.Estimate;
-import entities.Offer;
-import entities.Product;
-import entities.User;
+import entities.estimates.Estimate;
+import entities.offers.Offer;
+import entities.products.Product;
+import entities.users.User;
+import entities.users.UserType;
 import scenes.*;
+import session.UserSession;
 import status.LoginStatus;
 import status.RegisterStatus;
 import javafx.application.Platform;
@@ -48,12 +50,16 @@ public class Controller {
     }
 
     public LoginStatus login(String username, String password) {
-        // TODO
+        // TODO : VERIFY CREDENTIALS + GET_USER_ID
+
+        User user = new User(0, username, UserType.ANNOUNCER);
+        UserSession.getInstance().login(user);
         return LoginStatus.SUCCESS;
     }
 
     public RegisterStatus register(String username, String password) {
-        // TODO
+        // TODO : REGISTER USER TO DATABASE
+
         return RegisterStatus.REGISTERED;
     }
 

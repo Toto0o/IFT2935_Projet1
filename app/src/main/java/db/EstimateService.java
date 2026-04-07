@@ -1,6 +1,6 @@
 package db;
 
-import entities.Estimate;
+import entities.estimates.Estimate;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

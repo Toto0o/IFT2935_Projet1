@@ -9,4 +9,8 @@ module app {
     exports entities;
     exports status;
     opens kijijiApp to javafx.fxml;
+    exports entities.products;
+    exports entities.offers;
+    exports entities.estimates;
+    exports entities.users;
 }

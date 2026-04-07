@@ -1,6 +1,7 @@
 package entities;
 
 import controllers.Controller;
+import entities.products.Product;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -37,7 +38,7 @@ public class ShowEntities {
         tfDescription.setEditable(false);
         Label lblDescription = new Label("Description : ");
 
-        Text txtEtat = new Text(product.getEtat());
+        Text txtEtat = new Text(product.getProductState().toString());
         TextField tfEtat = new TextField();
         tfEtat.setId("tdEtat");
         tfEtat.setEditable(false);
@@ -49,7 +50,7 @@ public class ShowEntities {
         txtEstimate.setVisible(owner);
         lblEstimate.setVisible(owner);
 
-        Text txtCategorie = new Text(product.getCategorie());
+        Text txtCategorie = new Text(product.getCategorie().toString());
         TextField tfCategorie = new TextField();
         tfCategorie.setId("tfCategorie");
         tfCategorie.setEditable(false);
@@ -73,10 +74,10 @@ public class ShowEntities {
                     : product.getDescription();
             String etat = (!tfEtat.getText().isEmpty())
                     ? tfEtat.getText().trim()
-                    : product.getEtat();
+                    : product.getProductState().toString();
             String categorie = (!tfDescription.getText().isEmpty())
                     ? tfCategorie.getText().trim()
-                    : product.getCategorie();
+                    : product.getCategorie().toString();
 
             controller.updateProduct(product.getId(), titre, description, etat, categorie);
 
@@ -87,7 +88,6 @@ public class ShowEntities {
 
             btnSave.setDisable(true);
         });
-
 
         Button btnEdit = new Button("Modifier");
         btnEdit.setOnMouseClicked(edit -> {
@@ -100,12 +100,9 @@ public class ShowEntities {
             btnEdit.setDisable(true);
         });
 
-
         HBox btnBox = new HBox();
         btnBox.getChildren().addAll(btnEdit, btnSave);
         content.getChildren().add(btnBox);
-
-
 
         return main;
     }

@@ -1,20 +1,20 @@
-package entities;
+package entities.estimates;
 
-import status.EstimateStatus;
+import entities.Entity;
 
 public class Estimate extends Entity {
 
     private int expertId;
     private int productId;
-    private int estimate;
-    private EstimateStatus status;
+    private double estimate;
+    private boolean decision;
 
-    public Estimate(int id, int expertId, int estimate, int productId) {
+    public Estimate(int id, int expertId, int estimate, int productId, boolean decision) {
         super(id);
         this.expertId = expertId;
         this.estimate = estimate;
         this.productId = productId;
-        this.status = EstimateStatus.NO_ESTIMATE;
+        this.decision = decision;
     }
     public int getExpertId() {
         return expertId;
@@ -22,10 +22,10 @@ public class Estimate extends Entity {
     public void setExpertId(int expertId) {
         this.expertId = expertId;
     }
-    public int getEstimate() {
+    public double getEstimate() {
         return estimate;
     }
-    public void setEstimate(int estimate) {
+    public void setEstimate(double estimate) {
         this.estimate = estimate;
     }
     public int getProductId() {
@@ -34,11 +34,7 @@ public class Estimate extends Entity {
     public void setProductId(int productId) {
         this.productId = productId;
     }
-    public EstimateStatus getStatus() {
-        return status;
-    }
-    public void setStatus(EstimateStatus status) {
-        this.status = status;
-    }
+    public boolean getDecision() {return this.decision;}
+    public void setDecision(boolean decision) {this.decision = decision;}
 
 }
