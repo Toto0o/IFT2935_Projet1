@@ -2,6 +2,8 @@ package scenes;
 
 import controllers.Controller;
 
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
@@ -14,12 +16,11 @@ public abstract class AppScene {
     public AppScene(Controller controller) {
         this.controller = controller;
         root = new BorderPane();
-        scene = new Scene(root);
         setScene();
     }
 
-    public Scene getScene() {
-        return scene;
+    public Parent getSceneRoot() {
+        return root;
     }
 
     public abstract void setScene();

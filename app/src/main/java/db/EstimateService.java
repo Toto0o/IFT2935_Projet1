@@ -33,7 +33,8 @@ public class EstimateService {
                         rs.getInt("id"),
                         rs.getInt("expertId"),
                         rs.getInt("estimate"),
-                        rs.getInt("productId")
+                        rs.getInt("productId"),
+                        rs.getBoolean("decision")
                 );
                 estimates.add(currentEstimate);
             }
@@ -59,7 +60,8 @@ public class EstimateService {
                     rs.getInt("id"),
                     rs.getInt("expertId"),
                     rs.getInt("estimate"),
-                    rs.getInt("productId")
+                    rs.getInt("productId"),
+                    rs.getBoolean("decicision")
             );
 
         } catch (SQLException e) {

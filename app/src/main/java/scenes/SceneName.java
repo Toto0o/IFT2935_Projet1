@@ -4,5 +4,6 @@ public enum SceneName {
     LOGIN,
     REGISTER,
     BUY_PRODUCTS,
-    SELL_PRODUCTS
+    MY_PRODUCTS,
+    MY_ACCOUNT
 }

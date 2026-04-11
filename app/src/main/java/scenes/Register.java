@@ -1,13 +1,10 @@
 package scenes;
 
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import status.RegisterStatus;
 import controllers.Controller;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 public class Register extends AppScene {
@@ -20,22 +17,27 @@ public class Register extends AppScene {
     public void setScene() {
         VBox vbox = new VBox();
 
-        Text pageTitle = new Text("Login");
-
-        Button btnLogin = new Button("Login");
-        btnLogin.setId("btnLogin");
+        Text pageTitle = new Text("Register");
 
         Button btnRegister = new Button("Register");
-        btnRegister.setId("btnRegister");
+
+        Hyperlink lnkLogin = new Hyperlink("Already have an account? Login");
+        lnkLogin.setOnAction(e -> {
+            controller.changeScene(SceneName.LOGIN);
+        });
 
         TextField tfUser = new TextField();
-        tfUser.setId("tfUser");
+        Label lblUser = new Label("Email");
+
+        TextField tfFName = new TextField();
+        Label lblFName = new Label("First name");
+
+        TextField tfLName = new TextField();
+        Label lblLName = new Label("Last name");
 
         PasswordField pfPass = new PasswordField();
-        pfPass.setId("pfPass");
-
-        Label lblUser = new Label("Username");
         Label lblPass = new Label("Password");
+
         Label lblStatus = new Label("");
 
         root.setCenter(vbox);
@@ -43,24 +45,27 @@ public class Register extends AppScene {
         vbox.setAlignment(Pos.CENTER);
         vbox.setStyle("-fx-text-fill: white;");
         vbox.getChildren().add(pageTitle);
-        vbox.getChildren().addAll(lblStatus, lblUser, tfUser, lblPass, pfPass, btnLogin, btnRegister);
+        vbox.getChildren().addAll(
+                lblStatus,
+                lblUser, tfUser,
+                lblFName, tfFName,
+                lblLName, tfLName,
+                lblPass, pfPass,
+                btnRegister, lnkLogin);
         vbox.setSpacing(10);
 
-        pageTitle.setStyle("-fx-text-fill: white;-fx-font-size: 14px");
+        pageTitle.getStyleClass().add("title");
 
-        tfUser.setMaxWidth(250);
-        pfPass.setMaxWidth(250);
-
-        btnRegister.setOnMouseClicked(register -> {
+        btnRegister.setOnAction(e -> {
             String user = tfUser.getText().trim();
             String pass = pfPass.getText().trim();
+
             RegisterStatus status = controller.register(user, pass);
             lblStatus.setText(status.toString());
+
+            if (status == RegisterStatus.REGISTERED) {
+                controller.changeScene(SceneName.BUY_PRODUCTS);
+            }
         });
-
-        btnLogin.setOnMouseClicked(login ->
-                controller.changeScene(SceneName.LOGIN)
-        );
     }
-
 }
