@@ -2,23 +2,32 @@ package entities;
 
 import controllers.Controller;
 import entities.products.Product;
+import entities.users.User;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
-public class ShowEntities {
+import java.util.List;
+
+public class EntitiesBuilder {
 
     private Controller controller;
 
-    public ShowEntities(Controller controller) {
+    public EntitiesBuilder(Controller controller) {
         this.controller = controller;
     }
 
-    public BorderPane showProduct(Product product, boolean owner) {
+    public void showAllProducts(List<Product> products, Pane content) {
+        for (Product product : products) {
+            content.getChildren().add(
+                    showProduct(product)
+            );
+        }
+    }
+
+    private BorderPane showProduct(Product product) {
         BorderPane main = new BorderPane();
 
         Button btnClose = new Button("x");
@@ -44,12 +53,6 @@ public class ShowEntities {
         tfEtat.setEditable(false);
         Label lblEtat = new Label("État");
 
-        // TODO : GET_ESTIMATION_BY_ID
-        Text txtEstimate = new Text("estiamation : $");
-        Label lblEstimate = new Label("Estimation : ");
-        txtEstimate.setVisible(owner);
-        lblEstimate.setVisible(owner);
-
         Text txtCategorie = new Text(product.getCategorie().toString());
         TextField tfCategorie = new TextField();
         tfCategorie.setId("tfCategorie");
@@ -59,7 +62,6 @@ public class ShowEntities {
         content.getChildren().addAll(
                 lblTitre, txtTitre,
                 lblDescription, txtDescription,
-                lblEstimate, txtEstimate,
                 lblCategorie, txtCategorie
         );
 
@@ -105,5 +107,9 @@ public class ShowEntities {
         content.getChildren().add(btnBox);
 
         return main;
+    }
+
+    public void showProfile(User user, Pane content) {
+
     }
 }

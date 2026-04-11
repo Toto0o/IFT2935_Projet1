@@ -49,6 +49,7 @@ public class ProductService {
         return products;
     }
 
+
     public Product findById(int id) throws SQLException {
         query = ""; // TODO
         ResultSet rs;
@@ -73,6 +74,36 @@ public class ProductService {
             // TODO
         }
         return product;
+    }
+
+    public List<Product> findByAnnoucerId(int annoucerId)  throws SQLException {
+        query = ""; // TODO
+        ResultSet rs;
+        List<Product> products = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = db.getCon().prepareStatement(query);
+
+            // TODO : bind params to statement
+
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Product currentProduct = new Product(
+                        rs.getInt("id"),
+                        rs.getString("titre"),
+                        rs.getString("description"),
+                        ProductState.getProductState(rs.getString("state")),
+                        ProductCategory.getProductCategory(rs.getString("categorie")),
+                        ProductStatus.getProductStatus(rs.getString("status")),
+                        rs.getInt("annoucerId")
+                );
+                products.add(currentProduct);
+            }
+
+        } catch (SQLException e) {
+            // TODO
+        }
+        return products;
     }
 
     public Product findByPrice(double price) throws SQLException {

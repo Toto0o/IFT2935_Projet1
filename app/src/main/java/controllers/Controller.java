@@ -1,30 +1,30 @@
 package controllers;
 
 import db.*;
+import entities.EntitiesBuilder;
 import entities.estimates.Estimate;
 import entities.offers.Offer;
 import entities.products.Product;
 import entities.users.User;
 import entities.users.UserType;
+import javafx.scene.layout.BorderPane;
 import scenes.*;
 import session.UserSession;
 import status.LoginStatus;
 import status.RegisterStatus;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 public class Controller {
 
-    private Platform platform;
-
-    private DataBase dataBase;
+    //private Platform platform;
+    private EntitiesBuilder entitiesBuilder;
 
     private Stage stage;
-    private Scene scene;
     private Scene mainScene;
     private AppScene appScene;
 
@@ -35,9 +35,11 @@ public class Controller {
     private EstimateService estimateService;
 
     public Controller(Stage stage) {
+        entitiesBuilder = new EntitiesBuilder(this);
         try {
-            this.dataBase = new DataBase("", "", "");
+            this.db = new DataBase("", "", "");
         } catch (Exception e) {
+            e.printStackTrace();
             // TODO
         }
         userService = new UserService(db);
@@ -46,6 +48,12 @@ public class Controller {
         estimateService = new EstimateService(db);
 
         this.stage = stage;
+        BorderPane dummy = new BorderPane();
+        mainScene = new Scene(dummy);
+        mainScene.getStylesheets().add(
+                Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm()
+        );
+        stage.setScene(mainScene);
         changeScene(SceneName.LOGIN);
     }
 
@@ -54,13 +62,20 @@ public class Controller {
 
         User user = new User(0, username, UserType.ANNOUNCER);
         UserSession.getInstance().login(user);
-        return LoginStatus.SUCCESS;
+        if (UserSession.getInstance().isLogin()) return LoginStatus.SUCCESS;
+        else return LoginStatus.LOGIN_ERROR;
     }
 
     public RegisterStatus register(String username, String password) {
         // TODO : REGISTER USER TO DATABASE
 
+
         return RegisterStatus.REGISTERED;
+    }
+
+    public void logout() {
+        UserSession.getInstance().logout();
+        changeScene(SceneName.LOGIN);
     }
 
     public List<User> getUsers() throws SQLException {
@@ -113,12 +128,27 @@ public class Controller {
         return product;
     }
 
+    public List<Product> findProductByAnnoucerId(int annoucerId) {
+        List<Product> products = null;
+        try {
+            products = productService.findByAnnoucerId(annoucerId);
+        } catch (SQLException e) {
+            // TODO
+        }
+        return products;
+    }
+
     public Product findProductByName(String name) {
         // TODO
         return null;
     }
 
-    public List<Product> findProductsByPrice(double price) {
+    public List<Product> findProductsByPriceMin(double price) {
+        // TODO
+        return null;
+    }
+
+    public List<Product> findProductsByPriceMax(double price) {
         // TODO
         return null;
     }
@@ -176,6 +206,14 @@ public class Controller {
     }
 
 
+    public EntitiesBuilder getEntitiesBuilder() {
+        return entitiesBuilder;
+    }
+
+    public int getCurrentUserId() {
+        return UserSession.getInstance().getUser().getId();
+    }
+
 
     public void changeScene(SceneName scene) {
 
@@ -185,23 +223,24 @@ public class Controller {
             case LOGIN -> appScene = new Login(this);
             case REGISTER -> appScene = new Register(this);
             case BUY_PRODUCTS -> appScene = new BuyProducts(this);
-            case SELL_PRODUCTS -> appScene = new SellProducts(this);
+            case MY_PRODUCTS -> appScene = new MyProducts(this);
+            case MY_ACCOUNT -> appScene = new MyAccount(this);
         }
 
         assert appScene != null;
-        mainScene = appScene.getScene();
-
-        stage.setScene(mainScene);
+        mainScene.setRoot(appScene.getSceneRoot());
         stage.setMaximized(true);
     }
 
     public void exit() {
         stage.close();
-        platform = null;
+        //platform = null;
     }
 
     // DEBUG
     public AppScene getAppScene() {
         return appScene;
     }
+
+
 }

@@ -14,9 +14,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        controller = new Controller(primaryStage);
-        primaryStage.setTitle("Kijiji");
-        primaryStage.show();
+        try {
+            controller = new Controller(primaryStage);
+            primaryStage.setTitle("Kijiji");
+            primaryStage.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     // debug
