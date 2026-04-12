@@ -17,7 +17,7 @@ create table users (
 		),
 	last_name varchar(20) not null check (trim(last_name) <> ''),   -- trim(X) <> '' = non-vide --
 	first_name varchar(20) not null check (trim(first_name) <> ''),
-	type text not null check (type in ('annonceur', 'acheteur', 'expert'))
+	type_expert boolean                     -- True = expert ou False = non-expert --
 );
 
 -- Products table --
