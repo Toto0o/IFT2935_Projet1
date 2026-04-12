@@ -1,6 +1,7 @@
 package scenes;
 
 import javafx.scene.text.Text;
+import session.UserSession;
 import status.LoginStatus;
 import controllers.Controller;
 
@@ -23,8 +24,10 @@ public class Login extends AppScene {
         Button btnLogin = new Button("Login");
         btnLogin.setId("btnLogin");
 
-        Button btnRegister = new Button("Register");
-        btnRegister.setId("btnRegister");
+        Hyperlink lnkRegister = new Hyperlink("Don't have an account? Register");
+        lnkRegister.setOnAction(e -> {
+           controller.changeScene(SceneName.REGISTER);
+        });
 
         TextField tfUser = new TextField();
         tfUser.setId("tfUser");
@@ -40,23 +43,24 @@ public class Login extends AppScene {
         vbox.setAlignment(Pos.CENTER);
         vbox.setStyle("-fx-text-fill: white;");
         vbox.getChildren().add(pageTitle);
-        vbox.getChildren().addAll(lblStatus, lblUser, tfUser, lblPass, pfPass, btnLogin, btnRegister);
+        vbox.getChildren().addAll(lblStatus, lblUser, tfUser, lblPass, pfPass, btnLogin, lnkRegister);
         vbox.setSpacing(10);
 
-        pageTitle.setStyle("-fx-text-fill: white;-fx-font-size: 14px;");
+        pageTitle.getStyleClass().add("title");
 
-        tfUser.setMaxWidth(250);
-        pfPass.setMaxWidth(250);
-
-        btnLogin.setOnMouseClicked(login -> {
+        btnLogin.setOnAction(e -> {
             String user = tfUser.getText().trim();
             String pass = pfPass.getText().trim();
+
             LoginStatus status = controller.login(user, pass);
             lblStatus.setText(status.toString());
-        });
 
-        btnRegister.setOnMouseClicked(register ->
-            controller.changeScene(SceneName.REGISTER)
-        );
+            if (status == LoginStatus.SUCCESS) {
+                controller.changeScene(SceneName.BUY_PRODUCTS);
+            } else {
+                tfUser.clear();
+                pfPass.clear();
+            }
+        });
     }
 }

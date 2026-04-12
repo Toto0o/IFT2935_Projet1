@@ -3,7 +3,8 @@ package status;
 public enum LoginStatus {
     SUCCESS("Success!"),
     USERNAME_NOT_FOUND("Username not found"),
-    PASSWORD_ERROR("Incorrect password");
+    PASSWORD_ERROR("Incorrect password"),
+    LOGIN_ERROR("Erreur d'identificatiopn");
 
     private final String displayName;
 
