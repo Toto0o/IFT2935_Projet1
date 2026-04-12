@@ -4,30 +4,31 @@ import entities.Entity;
 
 public class User extends Entity {
 
-    private String username, password;
-    private UserType userType;
+    private String email, password, lname, fname;
+    private boolean expert;
+    
 
-    public User(int id, String username, UserType userType) {
+    public User(int id, String email, boolean expert) {
         super(id);
-        this.username = username;
-        this.userType = userType;
+        this.email = email;
+        this.expert = expert;
         //this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getemail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setemail(String email) {
+        this.email = email;
     }
 
-    public UserType getType() {
-        return this.userType;
+    public boolean isExpert() {
+        return this.expert;
     }
 
-    public void setType(UserType type) {
-        this.userType = type;
+    public void setExpert(boolean expert) {
+        this.expert = expert;
     }
 
 }
