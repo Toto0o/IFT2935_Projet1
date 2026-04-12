@@ -1,65 +1,64 @@
 -- USERS (sample data)
-INSERT INTO users (email, u_password, last_name, first_name, type) VALUES
-                                                                       ('lucas.martin@gmail.com','Pass6@A','Martin','Lucas','acheteur'),
-                                                                       ('emma.bernard@yahoo.com','Pass7#B','Bernard','Emma','annonceur'),
-                                                                       ('noah.thomas@hotmail.com','Pass8$C','Thomas','Noah','expert'),
-                                                                       ('olivia.petit@gmail.com','Pass9!D','Petit','Olivia','acheteur'),
-                                                                       ('liam.robert@gmail.com','Pass10@E','Robert','Liam','annonceur'),
+INSERT INTO users (email, u_password, last_name, first_name, type_expert) VALUES
+                                                                              ('lucas.martin@gmail.com','Pass6@A','Martin','Lucas',FALSE),
+                                                                              ('emma.bernard@yahoo.com','Pass7#B','Bernard','Emma',FALSE),
+                                                                              ('noah.thomas@hotmail.com','Pass8$C','Thomas','Noah',TRUE),
+                                                                              ('olivia.petit@gmail.com','Pass9!D','Petit','Olivia',FALSE),
+                                                                              ('liam.robert@gmail.com','Pass10@E','Robert','Liam',FALSE),
 
-                                                                       ('ava.richard@yahoo.com','Pass11#F','Richard','Ava','expert'),
-                                                                       ('ethan.durand@gmail.com','Pass12$G','Durand','Ethan','acheteur'),
-                                                                       ('mia.dubois@hotmail.com','Pass13!H','Dubois','Mia','annonceur'),
-                                                                       ('logan.moreau@gmail.com','Pass14@I','Moreau','Logan','expert'),
-                                                                       ('chloe.laurent@yahoo.com','Pass15#J','Laurent','Chloe','acheteur'),
+                                                                              ('ava.richard@yahoo.com','Pass11#F','Richard','Ava',TRUE),
+                                                                              ('ethan.durand@gmail.com','Pass12$G','Durand','Ethan',FALSE),
+                                                                              ('mia.dubois@hotmail.com','Pass13!H','Dubois','Mia',FALSE),
+                                                                              ('logan.moreau@gmail.com','Pass14@I','Moreau','Logan',TRUE),
+                                                                              ('chloe.laurent@yahoo.com','Pass15#J','Laurent','Chloe',FALSE),
 
-                                                                       ('nathan.simon@gmail.com','Pass16$K','Simon','Nathan','annonceur'),
-                                                                       ('zoe.michel@hotmail.com','Pass17!L','Michel','Zoe','expert'),
-                                                                       ('leo.lefebvre@gmail.com','Pass18@M','Lefebvre','Leo','acheteur'),
-                                                                       ('lina.garcia@yahoo.com','Pass19#N','Garcia','Lina','annonceur'),
-                                                                       ('hugo.david@gmail.com','Pass20$O','David','Hugo','expert'),
+                                                                              ('nathan.simon@gmail.com','Pass16$K','Simon','Nathan',FALSE),
+                                                                              ('zoe.michel@hotmail.com','Pass17!L','Michel','Zoe',TRUE),
+                                                                              ('leo.lefebvre@gmail.com','Pass18@M','Lefebvre','Leo',FALSE),
+                                                                              ('lina.garcia@yahoo.com','Pass19#N','Garcia','Lina',FALSE),
+                                                                              ('hugo.david@gmail.com','Pass20$O','David','Hugo',TRUE),
 
-                                                                       ('ines.bertrand@hotmail.com','Pass21!P','Bertrand','Ines','acheteur'),
-                                                                       ('adam.roux@gmail.com','Pass22@Q','Roux','Adam','annonceur'),
-                                                                       ('sarah.vincent@yahoo.com','Pass23#R','Vincent','Sarah','expert'),
-                                                                       ('tom.fournier@gmail.com','Pass24$S','Fournier','Tom','acheteur'),
-                                                                       ('eva.morel@hotmail.com','Pass25!T','Morel','Eva','annonceur'),
+                                                                              ('ines.bertrand@hotmail.com','Pass21!P','Bertrand','Ines',FALSE),
+                                                                              ('adam.roux@gmail.com','Pass22@Q','Roux','Adam',FALSE),
+                                                                              ('sarah.vincent@yahoo.com','Pass23#R','Vincent','Sarah',TRUE),
+                                                                              ('tom.fournier@gmail.com','Pass24$S','Fournier','Tom',FALSE),
+                                                                              ('eva.morel@hotmail.com','Pass25!T','Morel','Eva',FALSE),
 
-                                                                       ('louis.girard@gmail.com','Pass26@U','Girard','Louis','expert'),
-                                                                       ('jade.andre@yahoo.com','Pass27#V','Andre','Jade','acheteur'),
-                                                                       ('noe.mercier@gmail.com','Pass28$W','Mercier','Noe','annonceur'),
-                                                                       ('lea.dupont@hotmail.com','Pass29!X','Dupont','Lea','expert'),
-                                                                       ('mathis.lambert@gmail.com','Pass30@Y','Lambert','Mathis','acheteur'),
+                                                                              ('louis.girard@gmail.com','Pass26@U','Girard','Louis',TRUE),
+                                                                              ('jade.andre@yahoo.com','Pass27#V','Andre','Jade',FALSE),
+                                                                              ('noe.mercier@gmail.com','Pass28$W','Mercier','Noe',FALSE),
+                                                                              ('lea.dupont@hotmail.com','Pass29!X','Dupont','Lea',TRUE),
+                                                                              ('mathis.lambert@gmail.com','Pass30@Y','Lambert','Mathis',FALSE),
 
-                                                                       ('anna.bonnet@yahoo.com','Pass31#Z','Bonnet','Anna','annonceur'),
-                                                                       ('theo.francois@gmail.com','Pass32$A','Francois','Theo','expert'),
-                                                                       ('lola.martinez@hotmail.com','Pass33!B','Martinez','Lola','acheteur'),
-                                                                       ('axel.legrand@gmail.com','Pass34@C','Legrand','Axel','annonceur'),
-                                                                       ('clara.garnier@yahoo.com','Pass35#D','Garnier','Clara','expert'),
+                                                                              ('anna.bonnet@yahoo.com','Pass31#Z','Bonnet','Anna',FALSE),
+                                                                              ('theo.francois@gmail.com','Pass32$A','Francois','Theo',TRUE),
+                                                                              ('lola.martinez@hotmail.com','Pass33!B','Martinez','Lola',FALSE),
+                                                                              ('axel.legrand@gmail.com','Pass34@C','Legrand','Axel',FALSE),
+                                                                              ('clara.garnier@yahoo.com','Pass35#D','Garnier','Clara',TRUE),
 
-                                                                       ('eliott.faure@gmail.com','Pass36$E','Faure','Eliott','acheteur'),
-                                                                       ('camille.renaud@hotmail.com','Pass37!F','Renaud','Camille','annonceur'),
-                                                                       ('gabriel.barbier@gmail.com','Pass38@G','Barbier','Gabriel','expert'),
-                                                                       ('manon.arnaud@yahoo.com','Pass39#H','Arnaud','Manon','acheteur'),
-                                                                       ('arthur.colin@gmail.com','Pass40$I','Colin','Arthur','annonceur'),
+                                                                              ('eliott.faure@gmail.com','Pass36$E','Faure','Eliott',FALSE),
+                                                                              ('camille.renaud@hotmail.com','Pass37!F','Renaud','Camille',FALSE),
+                                                                              ('gabriel.barbier@gmail.com','Pass38@G','Barbier','Gabriel',TRUE),
+                                                                              ('manon.arnaud@yahoo.com','Pass39#H','Arnaud','Manon',FALSE),
+                                                                              ('arthur.colin@gmail.com','Pass40$I','Colin','Arthur',FALSE),
 
-                                                                       ('alice.marchand@hotmail.com','Pass41!J','Marchand','Alice','expert'),
-                                                                       ('yanis.dasilva@gmail.com','Pass42@K','DaSilva','Yanis','acheteur'),
-                                                                       ('elise.noel@yahoo.com','Pass43#L','Noel','Elise','annonceur'),
-                                                                       ('julien.perrin@gmail.com','Pass44$M','Perrin','Julien','expert'),
-                                                                       ('nina.rolland@hotmail.com','Pass45!N','Rolland','Nina','acheteur'),
+                                                                              ('alice.marchand@hotmail.com','Pass41!J','Marchand','Alice',TRUE),
+                                                                              ('yanis.dasilva@gmail.com','Pass42@K','DaSilva','Yanis',FALSE),
+                                                                              ('elise.noel@yahoo.com','Pass43#L','Noel','Elise',FALSE),
+                                                                              ('julien.perrin@gmail.com','Pass44$M','Perrin','Julien',TRUE),
+                                                                              ('nina.rolland@hotmail.com','Pass45!N','Rolland','Nina',FALSE),
 
-                                                                       ('maxime.chevalier@gmail.com','Pass46@O','Chevalier','Maxime','annonceur'),
-                                                                       ('amelie.blanc@yahoo.com','Pass47#P','Blanc','Amelie','expert'),
-                                                                       ('paul.guerin@gmail.com','Pass48$Q','Guerin','Paul','acheteur'),
-                                                                       ('lucie.muller@hotmail.com','Pass49!R','Muller','Lucie','annonceur'),
-                                                                       ('simon.henry@gmail.com','Pass50@S','Henry','Simon','expert'),
+                                                                              ('maxime.chevalier@gmail.com','Pass46@O','Chevalier','Maxime',FALSE),
+                                                                              ('amelie.blanc@yahoo.com','Pass47#P','Blanc','Amelie',TRUE),
+                                                                              ('paul.guerin@gmail.com','Pass48$Q','Guerin','Paul',FALSE),
+                                                                              ('lucie.muller@hotmail.com','Pass49!R','Muller','Lucie',FALSE),
+                                                                              ('simon.henry@gmail.com','Pass50@S','Henry','Simon',TRUE),
 
-                                                                       ('eva.rousseau@yahoo.com','Pass51#T','Rousseau','Eva','acheteur'),
-                                                                       ('hugo.adam@gmail.com','Pass52$U','Adam','Hugo','annonceur'),
-                                                                       ('jules.paris@hotmail.com','Pass53!V','Paris','Jules','expert'),
-                                                                       ('lena.dumont@gmail.com','Pass54@W','Dumont','Lena','acheteur'),
-                                                                       ('noah.raymond@yahoo.com','Pass55#X','Raymond','Noah','annonceur');
-
+                                                                              ('eva.rousseau@yahoo.com','Pass51#T','Rousseau','Eva',FALSE),
+                                                                              ('hugo.adam@gmail.com','Pass52$U','Adam','Hugo',FALSE),
+                                                                              ('jules.paris@hotmail.com','Pass53!V','Paris','Jules',TRUE),
+                                                                              ('lena.dumont@gmail.com','Pass54@W','Dumont','Lena',FALSE),
+                                                                              ('noah.raymond@yahoo.com','Pass55#X','Raymond','Noah',FALSE);
 -- PRODUCTS
 INSERT INTO products (title, description, state_, status, category, wanted_price, announcer_id) VALUES
                                                                                                     ('Toyota Corolla','Good car','used','active','cars',8000,2),
@@ -200,57 +199,71 @@ FROM generate_series(1, 100) AS gs;
 -- =========================
 
 -- Simple queries
-SELECT * FROM users WHERE type='BUYER';
+
+-- affiche les produits dont le prix demandé est supérieur à 500.
 SELECT * FROM products WHERE price>500;
+-- affiche les offres avec un prix inférieur à 300.
 SELECT * FROM offers WHERE price<300;
+-- affiche les estimations supérieures à 400.
 SELECT * FROM estimates WHERE estimate>400;
+-- affiche les produits dans la catégorie électronique.
 SELECT * FROM products WHERE category='ELECTRONICS';
 
 -- Complex queries
-SELECT u.username, p.title, o.price, e.estimate
-FROM users u
-         JOIN offers o ON u.id=o.buyerId
-         JOIN products p ON p.id=o.productId
-         JOIN estimates e ON e.productId=p.id;
 
-SELECT p.title, COUNT(o.id)
-FROM products p
-         JOIN offers o ON p.id=o.productId
-GROUP BY p.title;
-
-SELECT u.username, AVG(o.price)
-FROM users u
-         JOIN offers o ON u.id=o.buyerId
-GROUP BY u.username;
-
-SELECT u.username, p.titre, o.price
-FROM users u
-         JOIN offers o ON u.id=o.buyerId
-         JOIN products p ON p.id=o.productId
-         JOIN estimates e ON e.productId=p.id
-WHERE o.price < e.estimate;
-
-SELECT p.category, COUNT(p.id), AVG(o.price)
-FROM products p
-         JOIN offers o ON p.id=o.productId
-         JOIN users u ON u.id=o.buyerId
-         JOIN estimates e ON e.productId=p.id
-GROUP BY p.category;
-
-SELECT u.first_name, p.title, o.price, e.estimate
+-- affiche pour chque offre: l'utilisateur, le produit, le prix et l'estimation
+SELECT u.first_name, u.last_name, p.title, o.price, e.estimate
 FROM users u
          JOIN offers o ON u.id_user = o.user_id
          JOIN products p ON p.id_product = o.product_id
          JOIN estimations e ON e.product_id = p.id_product;
 
+-- nombre d'offres par produit
+SELECT p.title, COUNT(o.id)
+FROM products p
+         JOIN offers o ON p.id=o.productId
+GROUP BY p.title;
+
+-- Prix moyen des offres faites par chaque utilisateur.
+SELECT u.first_name, u.last_name, AVG(o.price) AS avg_offer
+FROM users u
+         JOIN offers o ON u.id_user = o.user_id
+GROUP BY u.first_name, u.last_name;
+
+-- Affiche les offres qui sont inférieures à l’estimation de l’expert.
+SELECT u.first_name, p.title, o.price, e.estimate
+FROM users u
+         JOIN offers o ON u.id_user = o.user_id
+         JOIN products p ON p.id_product = o.product_id
+         JOIN estimations e ON e.product_id = p.id_product
+WHERE o.price < e.estimate;
+
+-- affiche pour chaque catégorie le nombre de produits et le prix moyen des offres
+SELECT p.category, COUNT(p.id_product) AS total_products, AVG(o.price) AS avg_price
+FROM products p
+         JOIN offers o ON p.id_product = o.product_id
+         JOIN users u ON u.id_user = o.user_id
+         JOIN estimations e ON e.product_id = p.id_product
+GROUP BY p.category;
+
+--Nombre et moyenne des estimations par produit
 SELECT p.title, COUNT(e.id_est) AS nb_estimations, AVG(e.estimate) AS moyenne
 FROM products p
          JOIN estimations e ON p.id_product = e.product_id
 GROUP BY p.title;
 
+--Affiche les produits avec des estimations acceptées par les experts.
 SELECT u.first_name, p.title, o.price, e.estimate
 FROM users u
          JOIN offers o ON u.id_user = o.user_id
          JOIN products p ON p.id_product = o.product_id
          JOIN estimations e ON e.product_id = p.id_product
 WHERE e.decision = TRUE;
+
+-- affiche pour chaque utilisateur : le nombre d'offre faites et l'estimation moyenne des produits sur lesquels il a fait des offres
+SELECT u.first_name, u.last_name, COUNT(o.id_offer) AS nb_offres, AVG(e.estimate) AS avg_estimate
+FROM users u
+         JOIN offers o ON u.id_user = o.user_id
+         JOIN products p ON p.id_product = o.product_id
+         JOIN estimations e ON e.product_id = p.id_product
+GROUP BY u.first_name, u.last_name;
