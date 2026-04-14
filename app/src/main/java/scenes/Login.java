@@ -26,7 +26,7 @@ public class Login extends AppScene {
 
         Hyperlink lnkRegister = new Hyperlink("Don't have an account? Register");
         lnkRegister.setOnAction(e -> {
-           controller.changeScene(SceneName.REGISTER);
+           controller.getSceneController().changeScene(SceneName.REGISTER, controller);
         });
 
         TextField tfUser = new TextField();
@@ -52,11 +52,11 @@ public class Login extends AppScene {
             String user = tfUser.getText().trim();
             String pass = pfPass.getText().trim();
 
-            LoginStatus status = controller.login(user, pass);
+            LoginStatus status = controller.getEntityController().login(user, pass);
             lblStatus.setText(status.toString());
 
             if (status == LoginStatus.SUCCESS) {
-                controller.changeScene(SceneName.BUY_PRODUCTS);
+                controller.getSceneController().changeScene(SceneName.BUY_PRODUCTS, controller);
             } else {
                 tfUser.clear();
                 pfPass.clear();

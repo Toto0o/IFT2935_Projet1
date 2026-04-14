@@ -28,17 +28,17 @@ public class MyAccount extends AppScene {
 
         Button btnLogout = new Button("Logout");
         btnLogout.setOnAction(e -> {
-            controller.logout();
+            controller.getEntityController().logout();
         });
 
         Button btnMyProducts = new Button("My products");
         btnMyProducts.setOnAction(e -> {
-            controller.changeScene(SceneName.MY_PRODUCTS);
+            controller.getSceneController().changeScene(SceneName.MY_PRODUCTS, controller);
         });
 
         Button btnBuyProducts = new Button("Buy products");
         btnBuyProducts.setOnAction(e -> {
-            controller.changeScene(SceneName.BUY_PRODUCTS);
+            controller.getSceneController().changeScene(SceneName.BUY_PRODUCTS, controller);
         });
 
         buttonBox.getChildren().addAll(

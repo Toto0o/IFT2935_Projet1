@@ -11,11 +11,11 @@ import javafx.scene.text.Text;
 
 import java.util.List;
 
-public class EntitiesBuilder {
+public class GraphicBuilder {
 
     private Controller controller;
 
-    public EntitiesBuilder(Controller controller) {
+    public GraphicBuilder(Controller controller) {
         this.controller = controller;
     }
 

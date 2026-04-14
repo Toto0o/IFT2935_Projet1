@@ -2,6 +2,7 @@ package scenes;
 
 import controllers.Controller;
 
+import controllers.SceneController;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

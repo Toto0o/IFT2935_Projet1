@@ -8,7 +8,7 @@ public class User extends Entity {
     private boolean expert;
     
 
-    public User(int id, String email, boolean expert) {
+    public User(int id, String email, String password, String lname, String fname, boolean expert) {
         super(id);
         this.email = email;
         this.expert = expert;
@@ -30,5 +30,30 @@ public class User extends Entity {
     public void setExpert(boolean expert) {
         this.expert = expert;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
 
 }

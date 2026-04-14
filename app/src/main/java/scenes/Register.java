@@ -23,7 +23,7 @@ public class Register extends AppScene {
 
         Hyperlink lnkLogin = new Hyperlink("Already have an account? Login");
         lnkLogin.setOnAction(e -> {
-            controller.changeScene(SceneName.LOGIN);
+            controller.getSceneController().changeScene(SceneName.LOGIN. controller);
         });
 
         TextField tfUser = new TextField();

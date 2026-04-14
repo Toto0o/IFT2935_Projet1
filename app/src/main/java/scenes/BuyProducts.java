@@ -28,17 +28,17 @@ public class BuyProducts extends AppScene {
 
         Button btnLogout = new Button("Logout");
         btnLogout.setOnAction(e -> {
-            controller.logout();
+            controller.getEntityController().logout();
         });
 
         Button btnMyProducts = new Button("My products");
         btnMyProducts.setOnAction(e -> {
-            controller.changeScene(SceneName.MY_PRODUCTS);
+            controller.getSceneController().changeScene(SceneName.MY_PRODUCTS, controller);
         });
 
         Button btnMyProfile = new Button("My account");
         btnMyProfile.setOnAction(e -> {
-            controller.changeScene(SceneName.MY_ACCOUNT);
+            controller.getSceneController().changeScene(SceneName.MY_ACCOUNT, controller);
         });
 
         btnBox.getChildren().addAll(btnMyProducts, btnMyProfile, btnLogout);
@@ -61,13 +61,13 @@ public class BuyProducts extends AppScene {
         Task<List<Product>> getProducts = new Task<>() {
             @Override
             protected List<Product> call() throws Exception {
-                return controller.getProducts();
+                return controller.getEntityController().getProducts();
             }
         };
         getProducts.setOnSucceeded(e -> {
             List<Product> products = getProducts.getValue();
 
-            controller.getEntitiesBuilder().showAllProducts(products, content);
+            //controller.getEntityController().getEntitiesBuilder().showAllProducts(products, content);
             content.getChildren().add(
                     new Text("Success!!")
             );
