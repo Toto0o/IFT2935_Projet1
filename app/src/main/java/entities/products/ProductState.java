@@ -3,8 +3,7 @@ package entities.products;
 public enum ProductState {
     NEW("new"),
     LIKE_NEW("like new"),
-    USED("used"),
-    AS_IS("as is");
+    USED("used");
 
     private final String displayName;
 

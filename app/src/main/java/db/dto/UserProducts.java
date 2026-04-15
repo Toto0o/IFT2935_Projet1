@@ -16,11 +16,23 @@ public class UserProducts implements DTO <UserProducts> {
         this.price = price;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
     @Override
     public TableColumn<UserProducts, ?>[] getTableColumns() {
         TableColumn<UserProducts, ?>[] columns = new TableColumn[3];
         columns[0] = new TableColumn<UserProducts, String>("username");
-        columns[0].setCellValueFactory(new PropertyValueFactory<>("username"));
+        columns[0].setCellValueFactory(new PropertyValueFactory<>("userName"));
         columns[1] = new TableColumn<UserProducts, String>("productName");
         columns[1].setCellValueFactory(new PropertyValueFactory<>("productName"));
         columns[2] = new TableColumn<UserProducts, Double>("price");

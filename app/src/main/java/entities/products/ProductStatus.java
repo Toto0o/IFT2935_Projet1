@@ -1,8 +1,8 @@
 package entities.products;
 
 public enum ProductStatus {
-    ACTIVE("Active"),
-    SOLD("Sold");
+    ACTIVE("active"),
+    SOLD("sold");
 
     private final String displayName;
 

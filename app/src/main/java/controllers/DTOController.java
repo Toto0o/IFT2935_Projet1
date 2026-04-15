@@ -32,6 +32,7 @@ public class DTOController {
             boaTB = new TableBuilder<>(buyerOfferAverages);
             scrollPane = boaTB.build();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
         return scrollPane;

@@ -4,16 +4,16 @@ import entities.Entity;
 
 public class Product extends Entity {
 
-    private String titre, description;
+    private String title, description;
     private ProductCategory categorie;
     ProductState ps;
     ProductStatus status;
     private int id;
     private int announcerId;
 
-    public Product(int id, String titre, String description, ProductState ps, ProductCategory categorie, ProductStatus status, int announcerId) {
+    public Product(int id, String title, String description, ProductState ps, ProductCategory categorie, ProductStatus status, int announcerId) {
         super(id);
-        this.titre = titre;
+        this.title = title;
         this.description = description;
         this.ps = ps;
         this.categorie = categorie;
@@ -21,12 +21,12 @@ public class Product extends Entity {
         this.status = status;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -37,11 +37,11 @@ public class Product extends Entity {
         this.description = description;
     }
 
-    public ProductState getProductState() {
+    public ProductState getPs() {
         return ps;
     }
 
-    public void setProductState(ProductState ps) {
+    public void setPs(ProductState ps) {
         this.ps = ps;
     }
 

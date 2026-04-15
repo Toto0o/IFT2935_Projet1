@@ -28,28 +28,9 @@ public class MyProducts extends AppScene {
         VBox header = new VBox();
         root.setTop(header);
 
-        HBox buttonBox = new HBox();
         HBox titleBox = new HBox();
-        header.getChildren().addAll(buttonBox, titleBox);
+        header.getChildren().addAll(navBar, titleBox);
 
-        Button btnLogout = new Button("Logout");
-        btnLogout.setOnAction(e -> {
-            controller.getEntityController().logout();
-        });
-
-        Button btnMyAccount = new Button("My account");
-        btnMyAccount.setOnAction(e -> {
-            controller.getSceneController().changeScene(SceneName.MY_ACCOUNT, controller);
-        });
-
-        Button btnBuyProducts = new Button("Buy products");
-        btnBuyProducts.setOnAction(e -> {
-            controller.getSceneController().changeScene(SceneName.BUY_PRODUCTS, controller);
-        });
-
-        buttonBox.getChildren().addAll(btnBuyProducts, btnMyAccount, btnLogout);
-        buttonBox.setAlignment(Pos.CENTER_RIGHT);
-        buttonBox.setSpacing(10);
 
         Text pageTitle = new Text("My products");
         pageTitle.getStyleClass().add("title");

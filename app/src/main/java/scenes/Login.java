@@ -17,6 +17,7 @@ public class Login extends AppScene {
 
     @Override
     public void setScene() {
+        System.out.println(controller);
         VBox vbox = new VBox();
 
         Text pageTitle = new Text("Login");

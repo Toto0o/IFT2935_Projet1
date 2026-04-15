@@ -1,5 +1,6 @@
 package db;
 
+import db.config.Database;
 import db.dto.*;
 import entities.products.Product;
 import entities.products.ProductCategory;
@@ -15,19 +16,19 @@ import java.util.List;
 
 public class DbService {
 
-    private DataBase db;
+    private Database db;
     private String query;
 
-    public DbService(DataBase db) {
+    public DbService(Database db) {
         this.db = db;
     }
 
     public List<UserProductsEstimate> getUserProducts() throws SQLException {
         query = "SELECT u.username, p.title, o.price, e.estimate " +
-                "FROM users u " +
-                "         JOIN offers o ON u.id=o.buyerId " +
-                "         JOIN products p ON p.id=o.productId " +
-                "         JOIN estimates e ON e.productId=p.id";
+                "FROM project.users u " +
+                "         JOIN project.offers o ON u.id_user=o.user_id " +
+                "         JOIN project.products p ON p.id=o.product_id " +
+                "         JOIN project.estimates e ON e.product_id=p.id_product";
         List<UserProductsEstimate> userProductsEstimates = new ArrayList<>();
         ResultSet rs;
 
@@ -45,11 +46,11 @@ public class DbService {
     }
 
     public List<UserProducts> getUserProductsLowPrices() throws SQLException {
-        query = "SELECT u.username, p.titre, o.price " +
+        query = "SELECT u.email, p.title, o.price " +
                 "FROM users u " +
-                "         JOIN offers o ON u.id=o.buyerId " +
-                "         JOIN products p ON p.id=o.productId " +
-                "         JOIN estimates e ON e.productId=p.id " +
+                "         JOIN offers o ON u.id_user=o.user_id " +
+                "         JOIN products p ON p.id_product=o.product_id " +
+                "         JOIN estimations e ON e.product_id=p.id_product " +
                 "WHERE o.price < e.estimate";
         List<UserProducts> userProducts = new ArrayList<>();
         ResultSet rs;
@@ -58,8 +59,8 @@ public class DbService {
         rs = stmt.executeQuery();
         while (rs.next()) {
             userProducts.add(new UserProducts(
-                    rs.getString("username"),
-                    rs.getString("titre"),
+                    rs.getString("email"),
+                    rs.getString("title"),
                     rs.getDouble("price")
             ));
         }
@@ -189,21 +190,21 @@ public class DbService {
         return userProductsEstimates;
     }
 
-    public List<Product> getProduct() throws SQLException {
-        query = "SELECT * from products";
+    public List<Product> getAllProducts() throws SQLException {
+        query = "SELECT * FROM products;";
         List<Product> products = new ArrayList<>();
         ResultSet rs;
         PreparedStatement stmt = db.getCon().prepareStatement(query);
         rs = stmt.executeQuery();
         while (rs.next()) {
             products.add(new Product(
-                    rs.getInt("id"),
+                    rs.getInt("id_product"),
                     rs.getString("title"),
                     rs.getString("description"),
                     ProductState.getProductState(rs.getString("state_")),
                     ProductCategory.getProductCategory(rs.getString("category")),
                     ProductStatus.getProductStatus(rs.getString("status")),
-                    rs.getInt("annoucer_id")
+                    rs.getInt("announcer_id")
             ));
         }
         return products;

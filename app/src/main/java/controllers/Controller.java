@@ -1,7 +1,8 @@
 package controllers;
 
 
-import db.DataBase;
+import db.config.Database;
+import db.config.DatabaseConfig;
 import db.DbService;
 import javafx.stage.Stage;
 
@@ -16,14 +17,18 @@ public class Controller {
 
     public Controller(Stage primaryStage) {
         DbService dbService;
+        String url = DatabaseConfig.getDbUrl() + "?currentSchema=project";
+        String user = DatabaseConfig.getDbUser();
+        String password = DatabaseConfig.getDbPassword();
+
         try {
-            DataBase db = new DataBase("", "", "");
+            Database db = new Database(url, user, password);
             dbService = new DbService(db);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         dtoController = new DTOController(dbService);
-        sceneController = new SceneController(primaryStage);
+        sceneController = new SceneController(primaryStage, this);
         entityController = new EntityController(dbService);
     }
 

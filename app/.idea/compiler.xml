@@ -10,5 +10,8 @@
         <module name="kijiji-app" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sql" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

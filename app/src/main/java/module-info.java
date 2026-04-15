@@ -9,6 +9,8 @@ module app {
     exports entities;
     exports status;
     exports db;
+    exports db.config;
+    exports db.dto;
     exports entities.products;
     exports entities.offers;
     exports entities.estimates;

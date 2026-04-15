@@ -13,7 +13,7 @@ public class SceneController {
     private Scene mainScene;
     private AppScene appScene;
 
-    public SceneController(Stage stage) {
+    public SceneController(Stage stage, Controller controller) {
         this.stage = stage;
         BorderPane dummy = new BorderPane();
         mainScene = new Scene(dummy);
@@ -21,7 +21,7 @@ public class SceneController {
                 Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm()
         );
         stage.setScene(mainScene);
-        changeScene(SceneName.LOGIN);
+        changeScene(SceneName.LOGIN, controller);
     }
 
     public void changeScene(SceneName scene, Controller controller) {
@@ -34,6 +34,7 @@ public class SceneController {
             case BUY_PRODUCTS -> appScene = new BuyProducts(controller);
             case MY_PRODUCTS -> appScene = new MyProducts(controller);
             case MY_ACCOUNT -> appScene = new MyAccount(controller);
+            case STATS -> appScene = new Stats(controller);
         }
 
         assert appScene != null;

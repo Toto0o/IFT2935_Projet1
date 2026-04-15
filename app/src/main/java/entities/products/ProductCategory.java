@@ -2,9 +2,13 @@ package entities.products;
 
 public enum ProductCategory {
     CARS("cars"),
-    REAL_ESTATE("Real estate"),
-    PETS("Pets"),
-    SERVICE("Service");
+    REAL_ESTATE("real estate"),
+    PETS("pets"),
+    SERVICE("service"),
+    FASHION("fashion"),
+    SPORTS("sports"),
+    FURNITURE("furniture"),
+    ELECTRONICS("electronics");
 
     private final String displayName;
 
