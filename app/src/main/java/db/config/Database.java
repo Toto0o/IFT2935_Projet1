@@ -10,6 +10,7 @@ public class Database {
 
     public Database(String DB_URL, String USER, String PASS) throws SQLException {
         try {
+            Class.forName("org.postgresql.Driver");
             this.con = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (Exception e) {
             throw new SQLException(e.getMessage());

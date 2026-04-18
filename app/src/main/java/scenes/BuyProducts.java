@@ -51,7 +51,7 @@ public class BuyProducts extends AppScene {
         getProducts.setOnSucceeded(e -> {
             List<Product> products = getProducts.getValue();
 
-            ScrollPane sp = controller.getEntityController().getGraphicBuilder().allProducts(products);
+            ScrollPane sp = controller.getEntityController().getGraphicBuilder().allProducts(products, controller, true);
             sp.setFitToHeight(true);
             sp.setFitToWidth(true);
             content.getChildren().add(sp);

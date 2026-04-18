@@ -40,11 +40,16 @@ public abstract class AppScene {
             controller.getSceneController().changeScene(SceneName.MY_PRODUCTS, controller);
         });
 
+        Button offers = new Button("OFFERS");
+        offers.setOnAction(e -> {
+            controller.getSceneController().changeScene(SceneName.MY_OFFERS, controller);
+        });
+
         Button stats = new Button("STATS");
         stats.setOnAction(e -> {
             controller.getSceneController().changeScene(SceneName.STATS, controller);
         });
-        navBar.getChildren().addAll(buy, sell, stats, logout);
+        navBar.getChildren().addAll(buy, sell, offers, stats, logout);
         navBar.setAlignment(Pos.CENTER_RIGHT);
         navBar.setSpacing(10);
         setScene();

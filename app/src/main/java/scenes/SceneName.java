@@ -6,5 +6,6 @@ public enum SceneName {
     BUY_PRODUCTS,
     MY_PRODUCTS,
     MY_ACCOUNT,
-    STATS
+    STATS,
+    MY_OFFERS
 }

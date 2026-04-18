@@ -1,5 +1,7 @@
 package entities.offers;
 
+import entities.products.ProductCategory;
+
 public enum OfferStatus {
     ACCEPTED("accepted"),
     DECLINED("declined"),
@@ -20,7 +22,7 @@ public enum OfferStatus {
         return getDisplayName();
     }
 
-    public OfferStatus getOfferStatus(String status) {
+    public static OfferStatus getOfferStatus(String status) {
         OfferStatus of = null;
         for (OfferStatus offerStatus : OfferStatus.values()) {
             if (offerStatus.toString().equals(status)) {

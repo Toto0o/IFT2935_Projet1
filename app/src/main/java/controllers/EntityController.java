@@ -109,6 +109,26 @@ public class EntityController {
         return id;
     }
 
+    public void addNewOffer(Offer offer) {
+        try {
+            dbService.addNewOffer(offer);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Offer> getOffersByUserId(int userId) {
+        List<Offer> offers = null;
+        try {
+            dbService.findOffersByUserId(userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return offers;
+    }
+
     public GraphicBuilder getGraphicBuilder() {
         return graphicBuilder;
     }

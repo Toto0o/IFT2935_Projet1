@@ -1,5 +1,6 @@
 package controllers;
 
+import entities.offers.MakeOffer;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -35,11 +36,17 @@ public class SceneController {
             case MY_PRODUCTS -> appScene = new MyProducts(controller);
             case MY_ACCOUNT -> appScene = new MyAccount(controller);
             case STATS -> appScene = new Stats(controller);
+            case MY_OFFERS -> appScene = new MyOffers(controller);
         }
 
         assert appScene != null;
         mainScene.setRoot(appScene.getSceneRoot());
         stage.setMaximized(true);
+    }
+
+    public void makeOffer(int id, Controller controller) {
+        MakeOffer makeOffer = new MakeOffer(id, controller);
+        makeOffer.start();
     }
 
     public void exit() {

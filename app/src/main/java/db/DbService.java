@@ -3,6 +3,8 @@ package db;
 import db.config.Database;
 import db.dto.*;
 import entities.estimates.Estimate;
+import entities.offers.Offer;
+import entities.offers.OfferStatus;
 import entities.products.Product;
 import entities.products.ProductCategory;
 import entities.products.ProductState;
@@ -334,6 +336,35 @@ public class DbService {
             id = rs.getInt("id_user");
         }
         return id;
+    }
+
+    public void addNewOffer(Offer offer) throws SQLException {
+        query = "INSERT INTO offers (price, msg, status, user_id) VALUES (?,?,?,?);)";
+        PreparedStatement stmt = db.getCon().prepareStatement(query);
+        stmt.setDouble(1, offer.getPrice());
+        stmt.setString(2, offer.getMessage());
+        stmt.setString(3, offer.getStatus().toString());
+        stmt.setInt(4, offer.getBuyerId());
+    }
+
+    public List<Offer> findOffersByUserId(int userId) throws SQLException {
+        query = "SELECT * FROM offers WHERE user_id=?;";
+        PreparedStatement stmt = db.getCon().prepareStatement(query);
+        stmt.setInt(1, userId);
+        ResultSet rs = stmt.executeQuery();
+        List<Offer> offers = new ArrayList<>();
+        while (rs.next()) {
+            Offer offer = new Offer(
+                    rs.getInt("id_offer"),
+                    rs.getDouble("price"),
+                    rs.getString("msg"),
+                    rs.getInt("product_id"),
+                    rs.getInt("user_id")
+            );
+            offer.setStatus(OfferStatus.valueOf(rs.getString("status")));
+            offers.add(offer);
+        }
+        return offers;
     }
 
 }
