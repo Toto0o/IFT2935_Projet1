@@ -16,6 +16,7 @@ public class Offer extends Entity {
         this.message = message;
         this.productId = productId;
         this.userId = userId;
+        this.status = OfferStatus.PENDING;
     }
     public double getPrice() {
         return price;

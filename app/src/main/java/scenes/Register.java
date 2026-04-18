@@ -1,5 +1,6 @@
 package scenes;
 
+import entities.users.User;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import status.RegisterStatus;
@@ -23,7 +24,7 @@ public class Register extends AppScene {
 
         Hyperlink lnkLogin = new Hyperlink("Already have an account? Login");
         lnkLogin.setOnAction(e -> {
-            controller.changeScene(SceneName.LOGIN);
+            controller.getSceneController().changeScene(SceneName.LOGIN, controller);
         });
 
         TextField tfUser = new TextField();
@@ -59,12 +60,14 @@ public class Register extends AppScene {
         btnRegister.setOnAction(e -> {
             String user = tfUser.getText().trim();
             String pass = pfPass.getText().trim();
+            String fname = tfFName.getText().trim();
+            String lname = tfLName.getText().trim();
 
-            RegisterStatus status = controller.register(user, pass);
+            RegisterStatus status = controller.getEntityController().register(user, pass, lname, fname, false);
             lblStatus.setText(status.toString());
 
             if (status == RegisterStatus.REGISTERED) {
-                controller.changeScene(SceneName.BUY_PRODUCTS);
+                controller.getSceneController().changeScene(SceneName.BUY_PRODUCTS, controller);
             }
         });
     }

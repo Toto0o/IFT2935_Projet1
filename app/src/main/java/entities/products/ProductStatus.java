@@ -1,8 +1,8 @@
 package entities.products;
 
 public enum ProductStatus {
-    ACTIVE("Active"),
-    SOLD("Sold");
+    ACTIVE("active"),
+    SOLD("sold");
 
     private final String displayName;
 
@@ -27,5 +27,13 @@ public enum ProductStatus {
             }
         }
         return ps;
+    }
+
+    public static String[] toStringArray() {
+        String[] array = new String[ProductStatus.values().length];
+        for (ProductStatus productStatus : ProductStatus.values()) {
+            array[productStatus.ordinal()] = productStatus.toString();
+        }
+        return array;
     }
 }

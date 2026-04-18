@@ -2,6 +2,8 @@ package scenes;
 
 import controllers.Controller;
 import entities.products.Product;
+import entities.products.ProductCategory;
+import entities.products.ProductState;
 import javafx.concurrent.Task;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -22,28 +24,8 @@ public class BuyProducts extends AppScene {
     public void setScene() {
         double minValue, maxValue;
         VBox header = new VBox();
-        HBox titleBox = new HBox();
-        HBox btnBox = new HBox();
-        header.getChildren().addAll(btnBox, titleBox);
-
-        Button btnLogout = new Button("Logout");
-        btnLogout.setOnAction(e -> {
-            controller.logout();
-        });
-
-        Button btnMyProducts = new Button("My products");
-        btnMyProducts.setOnAction(e -> {
-            controller.changeScene(SceneName.MY_PRODUCTS);
-        });
-
-        Button btnMyProfile = new Button("My account");
-        btnMyProfile.setOnAction(e -> {
-            controller.changeScene(SceneName.MY_ACCOUNT);
-        });
-
-        btnBox.getChildren().addAll(btnMyProducts, btnMyProfile, btnLogout);
-        btnBox.setSpacing(10);
-        btnBox.setAlignment(Pos.CENTER_RIGHT);
+        HBox titleBox = new HBox();;
+        header.getChildren().addAll(navBar, titleBox);
 
         Text pageTitle = new Text("Acheter des produits");
         pageTitle.getStyleClass().add("title");
@@ -51,26 +33,29 @@ public class BuyProducts extends AppScene {
         titleBox.getChildren().add(pageTitle);
         titleBox.setAlignment(Pos.CENTER);
 
-        TilePane content = new TilePane();
+        VBox content = new VBox();
         root.setTop(header);
         root.setCenter(content);
 
         ProgressIndicator spinner = new ProgressIndicator();
-        content.getChildren().setAll(spinner);
+        content.getChildren().add(spinner);
+
+
 
         Task<List<Product>> getProducts = new Task<>() {
             @Override
             protected List<Product> call() throws Exception {
-                return controller.getProducts();
+                return controller.getEntityController().getAllProducts();
             }
         };
         getProducts.setOnSucceeded(e -> {
             List<Product> products = getProducts.getValue();
 
-            controller.getEntitiesBuilder().showAllProducts(products, content);
-            content.getChildren().add(
-                    new Text("Success!!")
-            );
+            ScrollPane sp = controller.getEntityController().getGraphicBuilder().allProducts(products, controller, true);
+            sp.setFitToHeight(true);
+            sp.setFitToWidth(true);
+            content.getChildren().add(sp);
+            content.getChildren().remove(spinner);
         });
         getProducts.setOnFailed(e -> {
             getProducts.getException().printStackTrace();

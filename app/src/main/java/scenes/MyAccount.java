@@ -24,29 +24,8 @@ public class MyAccount extends AppScene {
         VBox header = new VBox();
         root.setTop(header);
 
-        HBox buttonBox = new HBox();
 
-        Button btnLogout = new Button("Logout");
-        btnLogout.setOnAction(e -> {
-            controller.logout();
-        });
-
-        Button btnMyProducts = new Button("My products");
-        btnMyProducts.setOnAction(e -> {
-            controller.changeScene(SceneName.MY_PRODUCTS);
-        });
-
-        Button btnBuyProducts = new Button("Buy products");
-        btnBuyProducts.setOnAction(e -> {
-            controller.changeScene(SceneName.BUY_PRODUCTS);
-        });
-
-        buttonBox.getChildren().addAll(
-                 btnMyProducts, btnBuyProducts, btnLogout
-        );
-        buttonBox.setSpacing(10);
-        buttonBox.setAlignment(Pos.CENTER_RIGHT);
-        header.getChildren().add(buttonBox);
+        header.getChildren().add(navBar);
 
         BorderPane content = new BorderPane();
         root.setCenter(content);

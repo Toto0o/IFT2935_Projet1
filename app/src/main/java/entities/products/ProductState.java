@@ -3,8 +3,7 @@ package entities.products;
 public enum ProductState {
     NEW("new"),
     LIKE_NEW("like new"),
-    USED("used"),
-    AS_IS("as is");
+    USED("used");
 
     private final String displayName;
 
@@ -29,5 +28,13 @@ public enum ProductState {
             }
         }
         return ps;
+    }
+
+    public static String[] toStringArray() {
+        String[] array = new String[ProductCategory.values().length];
+        for (ProductState productState : ProductState.values()) {
+            array[productState.ordinal()] = productState.toString();
+        }
+        return array;
     }
 }
