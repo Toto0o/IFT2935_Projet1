@@ -2,6 +2,7 @@ package db;
 
 import db.config.Database;
 import db.dto.*;
+import entities.estimates.Estimate;
 import entities.products.Product;
 import entities.products.ProductCategory;
 import entities.products.ProductState;
@@ -212,10 +213,11 @@ public class DbService {
     }
 
     public List<Product> getProductsByAnnouncerId(int annoucerId) throws SQLException{
-        query = "SELECT * FROM products WHERE id_product=?;";
+        query = "SELECT * FROM products WHERE announcer_id=?;";
         List<Product> products = new ArrayList<>();
         ResultSet rs;
         PreparedStatement stmt = db.getCon().prepareStatement(query);
+        stmt.setInt(1, annoucerId);
         rs = stmt.executeQuery();
         while (rs.next()) {
             products.add(new Product(
@@ -301,4 +303,37 @@ public class DbService {
         }
         return id;
     }
+
+    public int addNewEstimate(Estimate estimate) throws SQLException {
+        query = "INSERT INTO estimations (estimate, decision, expert_id, product_id) VALUES (?,?,?,?);";
+        PreparedStatement stmt = db.getCon().prepareStatement(query);
+        stmt.setDouble(1, estimate.getEstimate());
+        stmt.setBoolean(2, estimate.getDecision());
+        stmt.setInt(3, estimate.getExpertId());
+        stmt.setInt(4, estimate.getProductId());
+        stmt.executeUpdate();
+
+        query = "SELECT * FROM estimations WHERE product_id=?;";
+        stmt = db.getCon().prepareStatement(query);
+        stmt.setInt(1, estimate.getProductId());
+        ResultSet rs = stmt.executeQuery();
+        int id = -1;
+        while (rs.next()) {
+            id = rs.getInt("est_id");
+        }
+        return id;
+    }
+
+    public int getRandomExpert() throws SQLException {
+        query = "SELECT id_user FROM users where type_expert = ? ORDER BY RANDOM() LIMIT 1;";
+        PreparedStatement stmt = db.getCon().prepareStatement(query);
+        stmt.setBoolean(1, true);
+        ResultSet rs = stmt.executeQuery();
+        int id = -1;
+        while (rs.next()) {
+            id = rs.getInt("id_user");
+        }
+        return id;
+    }
+
 }

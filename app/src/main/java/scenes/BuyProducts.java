@@ -40,33 +40,7 @@ public class BuyProducts extends AppScene {
         ProgressIndicator spinner = new ProgressIndicator();
         content.getChildren().add(spinner);
 
-        VBox addProducts = new VBox();
 
-        Label lblTitle = new Label("Ttitle");
-        TextField txtTitle = new TextField();
-
-        Label lblDescription = new Label("Description");
-        TextField txtDescription = new TextField();
-
-        Label lblState = new Label("State");
-        ChoiceBox<String> stateChoice = new ChoiceBox<>();
-        stateChoice.getItems().addAll(
-                ProductState.values().toString()
-        );
-
-        Label lblCategory = new Label("Category");
-        ChoiceBox<String> categoryChoice = new ChoiceBox<>();
-        categoryChoice.getItems().addAll(
-                ProductCategory.values().toString()
-        );
-
-        Label lblPrice = new Label("Price");
-
-
-        Button newProduct = new Button("New Product");
-        newProduct.setOnAction(e -> {
-
-        });
 
         Task<List<Product>> getProducts = new Task<>() {
             @Override

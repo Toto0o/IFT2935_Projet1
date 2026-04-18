@@ -2,7 +2,10 @@ package controllers;
 
 import db.DbService;
 import entities.GraphicBuilder;
+import entities.estimates.Estimate;
+import entities.offers.Offer;
 import entities.products.Product;
+import entities.users.Expert;
 import entities.users.User;
 import scenes.Login;
 import session.UserSession;
@@ -40,6 +43,7 @@ public class EntityController {
         try {
             products = dbService.getProductsByAnnouncerId(announcerId);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
         return products;
@@ -73,14 +77,36 @@ public class EntityController {
         return RegisterStatus.REGISTERED;
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(Product product, Controller controller) {
+        int id = -1;
         try {
-            dbService.addNewProduct(product);
+            id = dbService.addNewProduct(product);
+            Expert expert = new Expert(id, controller);
+            expert.estimateProduct();
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void addEstimate(Estimate estimate) {
+        try {
+            dbService.addNewEstimate(estimate);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getRandomExpert() {
+        int id = -1;
+        try {
+            id = dbService.getRandomExpert();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
     }
 
     public GraphicBuilder getGraphicBuilder() {

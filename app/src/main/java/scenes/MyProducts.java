@@ -85,8 +85,8 @@ public class MyProducts extends AppScene {
                                 -1, title, description,
                                 ProductState.getProductState(state),
                                 ProductCategory.getProductCategory(category),
-                                ProductStatus.ACTIVE, announcer_id, price)
-                );
+                                ProductStatus.ACTIVE, announcer_id, price),
+                        controller);
                 controller.getSceneController().changeScene(SceneName.MY_PRODUCTS, controller);
             });
 
@@ -128,10 +128,13 @@ public class MyProducts extends AppScene {
             sp.setFitToHeight(true);
             sp.setFitToWidth(true);
             content.getChildren().add(sp);
+            content.setAlignment(Pos.CENTER);
         });
         getProductsByAnnoucerId.setOnFailed(e -> {
             getProductsByAnnoucerId.getException().printStackTrace();
             content.getChildren().setAll(new Text("Erreur lors du chargement des produits"));
         });
+
+        new Thread(getProductsByAnnoucerId).start();
     }
 }
