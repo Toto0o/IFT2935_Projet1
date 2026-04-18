@@ -17,6 +17,31 @@ public class ProductEstimateCount implements DTO<ProductEstimateCount> {
         this.average = average;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public double getAverage() {
+        return average;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
+    }
+
+
     @Override
     public TableColumn<ProductEstimateCount, ?>[] getTableColumns() {
         TableColumn<ProductEstimateCount, ?>[] columns = new TableColumn[3];

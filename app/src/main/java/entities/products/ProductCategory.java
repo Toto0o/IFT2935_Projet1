@@ -34,4 +34,12 @@ public enum ProductCategory {
         }
         return pc;
     }
+
+    public static String[] toStringArray() {
+        String[] array = new String[ProductCategory.values().length];
+        for (ProductCategory productCategory : ProductCategory.values()) {
+            array[productCategory.ordinal()] = productCategory.toString();
+        }
+        return array;
+    }
 }

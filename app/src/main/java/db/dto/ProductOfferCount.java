@@ -15,6 +15,22 @@ public class ProductOfferCount implements DTO<ProductOfferCount> {
         this.offerCount = offerCount;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getOfferCount() {
+        return offerCount;
+    }
+
+    public void setOfferCount(int offerCount) {
+        this.offerCount = offerCount;
+    }
+
     @Override
     public TableColumn<ProductOfferCount, ?>[] getTableColumns() {
         TableColumn<ProductOfferCount, ?>[] columns = new TableColumn[2];

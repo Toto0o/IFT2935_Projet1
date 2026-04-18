@@ -16,6 +16,22 @@ public class BuyerOfferAverage implements DTO<BuyerOfferAverage> {
         this.offerAverage = offerAverage;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public double getOfferAverage() {
+        return offerAverage;
+    }
+
+    public void setOfferAverage(double offerAverage) {
+        this.offerAverage = offerAverage;
+    }
+
     @Override
     public TableColumn<BuyerOfferAverage, ?>[] getTableColumns() {
         TableColumn<BuyerOfferAverage, ?>[] columns = new TableColumn[2];

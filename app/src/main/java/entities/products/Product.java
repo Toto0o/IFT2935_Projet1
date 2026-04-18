@@ -8,10 +8,10 @@ public class Product extends Entity {
     private ProductCategory categorie;
     ProductState ps;
     ProductStatus status;
-    private int id;
     private int announcerId;
+    private double price;
 
-    public Product(int id, String title, String description, ProductState ps, ProductCategory categorie, ProductStatus status, int announcerId) {
+    public Product(int id, String title, String description, ProductState ps, ProductCategory categorie, ProductStatus status, int announcerId, double price) {
         super(id);
         this.title = title;
         this.description = description;
@@ -19,6 +19,15 @@ public class Product extends Entity {
         this.categorie = categorie;
         this.announcerId = announcerId;
         this.status = status;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getTitle() {

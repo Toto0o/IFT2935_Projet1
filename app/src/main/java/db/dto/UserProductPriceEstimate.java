@@ -17,6 +17,33 @@ public class UserProductPriceEstimate implements  DTO<UserProductPriceEstimate> 
         this.estimate = estimate;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public String getProductName() {
+        return productName;
+    }
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public double getEstimate() {
+        return estimate;
+    }
+    public void setEstimate(double estimate) {
+        this.estimate = estimate;
+    }
+
+
     @Override
     public TableColumn<UserProductPriceEstimate, ?>[] getTableColumns() {
         TableColumn<UserProductPriceEstimate, ?>[] columns = new TableColumn[4];

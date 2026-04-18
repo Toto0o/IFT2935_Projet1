@@ -50,8 +50,9 @@ public class EntityController {
         try {
             user = dbService.findUserByUsername(email);
             UserSession.getInstance().login(user);
+            System.out.println("Controller : " + user.getemail() + " " + user.getPassword());
         } catch (Exception e) {
-
+            e.printStackTrace();
             return LoginStatus.USERNAME_NOT_FOUND;
         }
         if (!user.getPassword().equals(password)) {
@@ -62,10 +63,24 @@ public class EntityController {
     }
 
     public RegisterStatus register(String email, String password, String lname, String fname, boolean type_expert) {
-       try { dbService.addUser(email, password, lname, fname, type_expert);} catch (SQLException e) {
+       try {
+           int id = dbService.addUser(email, password, lname, fname, type_expert);
+           User user = new User(id,email,password,lname,fname,type_expert);
+           UserSession.getInstance().login(user);
+       } catch (SQLException e) {
            throw new RuntimeException(e);
        }
         return RegisterStatus.REGISTERED;
+    }
+
+    public void addProduct(Product product) {
+        try {
+            dbService.addNewProduct(product);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
     }
 
     public GraphicBuilder getGraphicBuilder() {

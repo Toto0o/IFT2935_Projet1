@@ -17,7 +17,7 @@ public class Controller {
 
     public Controller(Stage primaryStage) {
         DbService dbService;
-        String url = DatabaseConfig.getDbUrl() + "?currentSchema=project";
+        String url = DatabaseConfig.getDbUrl();
         String user = DatabaseConfig.getDbUser();
         String password = DatabaseConfig.getDbPassword();
 

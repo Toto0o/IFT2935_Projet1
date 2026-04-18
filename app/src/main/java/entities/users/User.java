@@ -12,7 +12,7 @@ public class User extends Entity {
         super(id);
         this.email = email;
         this.expert = expert;
-        //this.password = password;
+        this.password = password;
     }
 
     public String getemail() {

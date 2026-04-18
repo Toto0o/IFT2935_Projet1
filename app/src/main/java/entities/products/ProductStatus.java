@@ -28,4 +28,12 @@ public enum ProductStatus {
         }
         return ps;
     }
+
+    public static String[] toStringArray() {
+        String[] array = new String[ProductStatus.values().length];
+        for (ProductStatus productStatus : ProductStatus.values()) {
+            array[productStatus.ordinal()] = productStatus.toString();
+        }
+        return array;
+    }
 }

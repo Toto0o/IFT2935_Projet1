@@ -30,17 +30,12 @@ public abstract class AppScene {
             controller.getSceneController().changeScene(SceneName.LOGIN, controller);
         });
 
-        Button myAccount = new Button("My Account");
-        myAccount.setOnAction(e -> {
-            controller.getSceneController().changeScene(SceneName.MY_ACCOUNT, controller);
-        });
-
         Button buy = new Button("BUY");
         buy.setOnAction(e -> {
             controller.getSceneController().changeScene(SceneName.BUY_PRODUCTS, controller);
         });
 
-        Button sell = new Button("SELL");
+        Button sell = new Button("SELL / NEW");
         sell.setOnAction(e -> {
             controller.getSceneController().changeScene(SceneName.MY_PRODUCTS, controller);
         });
@@ -49,7 +44,7 @@ public abstract class AppScene {
         stats.setOnAction(e -> {
             controller.getSceneController().changeScene(SceneName.STATS, controller);
         });
-        navBar.getChildren().addAll(myAccount, buy, sell, stats, logout);
+        navBar.getChildren().addAll(buy, sell, stats, logout);
         navBar.setAlignment(Pos.CENTER_RIGHT);
         navBar.setSpacing(10);
         setScene();

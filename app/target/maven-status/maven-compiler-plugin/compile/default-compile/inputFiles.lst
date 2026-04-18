@@ -1,40 +1,40 @@
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/controllers/Controller.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/controllers/DTOController.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/controllers/EntityController.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/controllers/SceneController.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/DbService.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/config/Database.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/config/DatabaseConfig.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/dto/BuyerOfferAverage.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/dto/CategoryCount.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/dto/DTO.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/dto/ProductEstimateCount.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/dto/ProductOfferCount.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/dto/TableBuilder.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/dto/UserProductPriceEstimate.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/dto/UserProducts.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/db/dto/UserProductsEstimate.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/Entity.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/GraphicBuilder.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/estimates/Estimate.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/offers/Offer.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/offers/OfferStatus.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/products/Filter.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/products/Product.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/products/ProductCategory.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/products/ProductState.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/products/ProductStatus.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/entities/users/User.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/kijijiApp/App.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/module-info.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/scenes/AppScene.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/scenes/BuyProducts.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/scenes/Login.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/scenes/MyAccount.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/scenes/MyProducts.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/scenes/Register.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/scenes/SceneName.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/scenes/Stats.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/session/UserSession.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/status/LoginStatus.java
-/home/toto/Documents/SKOOL/H26/IFT2935/TP/Projet1/IFT2935_Projet1/app/src/main/java/status/RegisterStatus.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\controllers\Controller.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\controllers\DTOController.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\controllers\EntityController.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\controllers\SceneController.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\config\Database.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\config\DatabaseConfig.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\DbService.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\dto\BuyerOfferAverage.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\dto\CategoryCount.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\dto\DTO.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\dto\ProductEstimateCount.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\dto\ProductOfferCount.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\dto\TableBuilder.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\dto\UserProductPriceEstimate.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\dto\UserProducts.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\db\dto\UserProductsEstimate.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\Entity.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\estimates\Estimate.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\GraphicBuilder.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\offers\Offer.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\offers\OfferStatus.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\products\Filter.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\products\Product.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\products\ProductCategory.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\products\ProductState.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\products\ProductStatus.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\entities\users\User.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\kijijiApp\App.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\module-info.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\scenes\AppScene.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\scenes\BuyProducts.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\scenes\Login.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\scenes\MyAccount.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\scenes\MyProducts.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\scenes\Register.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\scenes\SceneName.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\scenes\Stats.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\session\UserSession.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\status\LoginStatus.java
+C:\Users\titoi\OneDrive - Universite de Montreal\Documents\SKOOL\H26\IFT2935\IFT2935_Projet1\app\src\main\java\status\RegisterStatus.java

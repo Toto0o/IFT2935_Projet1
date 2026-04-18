@@ -1,5 +1,6 @@
 package scenes;
 
+import entities.users.User;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import status.RegisterStatus;

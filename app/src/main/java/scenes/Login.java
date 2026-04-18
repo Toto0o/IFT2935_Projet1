@@ -53,6 +53,8 @@ public class Login extends AppScene {
             String user = tfUser.getText().trim();
             String pass = pfPass.getText().trim();
 
+            System.out.println("Login : " + user + " " + pass );
+
             LoginStatus status = controller.getEntityController().login(user, pass);
             lblStatus.setText(status.toString());
 

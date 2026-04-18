@@ -15,6 +15,30 @@ public class CategoryCount implements DTO<CategoryCount> {
         this.average = average;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public double getAverage() {
+        return average;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
+    }
+
     @Override
     public TableColumn<CategoryCount, ?>[] getTableColumns() {
         TableColumn<CategoryCount, ?>[] columns = new TableColumn[3];
