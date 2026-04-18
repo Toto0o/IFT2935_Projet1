@@ -59,8 +59,10 @@ public class Register extends AppScene {
         btnRegister.setOnAction(e -> {
             String user = tfUser.getText().trim();
             String pass = pfPass.getText().trim();
+            String fname = tfFName.getText().trim();
+            String lname = tfLName.getText().trim();
 
-            RegisterStatus status = controller.getEntityController().register(user, pass);
+            RegisterStatus status = controller.getEntityController().register(user, pass, lname, fname, false);
             lblStatus.setText(status.toString());
 
             if (status == RegisterStatus.REGISTERED) {

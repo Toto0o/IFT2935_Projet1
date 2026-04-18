@@ -35,24 +35,36 @@ public class EntityController {
         return products;
     }
 
+    public List<Product> getProductsByAnnouncerId(int announcerId) {
+        List<Product> products = null;
+        try {
+            products = dbService.getProductsByAnnouncerId(announcerId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return products;
+    }
+
     public LoginStatus login(String email, String password) {
         User user;
         try {
-            //user = dbService.findUserByUsername(email);
-            user = new User(1, email, password, "", "", false);
+            user = dbService.findUserByUsername(email);
             UserSession.getInstance().login(user);
         } catch (Exception e) {
 
             return LoginStatus.USERNAME_NOT_FOUND;
         }
-        /*if (!user.getPassword().equals(password)) {
+        if (!user.getPassword().equals(password)) {
             return LoginStatus.PASSWORD_ERROR;
-        }*/
+        }
 
         return LoginStatus.SUCCESS;
     }
 
-    public RegisterStatus register(String email, String password) {
+    public RegisterStatus register(String email, String password, String lname, String fname, boolean type_expert) {
+       try { dbService.addUser(email, password, lname, fname, type_expert);} catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
         return RegisterStatus.REGISTERED;
     }
 

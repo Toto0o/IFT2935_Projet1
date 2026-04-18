@@ -4,6 +4,7 @@ import controllers.Controller;
 import entities.products.Product;
 import javafx.concurrent.Task;
 import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -43,20 +44,20 @@ public class MyProducts extends AppScene {
         Task<List<Product>> getProductsByAnnoucerId = new Task<>() {
             @Override
             protected List<Product> call() throws Exception {
-                return null;
-                //return controller.findProductByAnnoucerId(id);
+                return controller.getEntityController().getProductsByAnnouncerId(id);
             }
         };
 
         getProductsByAnnoucerId.setOnSucceeded(e -> {
             List<Product> products = getProductsByAnnoucerId.getValue();
 
-            //controller.getEntitiesBuilder().showAllProducts(products, content);
-            content.getChildren().add(
-                    new Text("Success!!")
-            );
+            ScrollPane sp = controller.getEntityController().getGraphicBuilder().allProducts(products);
+            sp.setFitToHeight(true);
+            sp.setFitToWidth(true);
+            content.getChildren().add(sp);
         });
         getProductsByAnnoucerId.setOnFailed(e -> {
+            getProductsByAnnoucerId.getException().printStackTrace();
             content.getChildren().setAll(new Text("Erreur lors du chargement des produits"));
         });
     }

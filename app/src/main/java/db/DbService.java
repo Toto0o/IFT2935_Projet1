@@ -210,6 +210,26 @@ public class DbService {
         return products;
     }
 
+    public List<Product> getProductsByAnnouncerId(int annoucerId) throws SQLException{
+        query = "SELECT * FROM products WHERE id=?";
+        List<Product> products = new ArrayList<>();
+        ResultSet rs;
+        PreparedStatement stmt = db.getCon().prepareStatement(query);
+        rs = stmt.executeQuery();
+        while (rs.next()) {
+            products.add(new Product(
+                    rs.getInt("id_product"),
+                    rs.getString("title"),
+                    rs.getString("description"),
+                    ProductState.getProductState(rs.getString("state_")),
+                    ProductCategory.getProductCategory(rs.getString("category")),
+                    ProductStatus.getProductStatus(rs.getString("status")),
+                    rs.getInt("announcer_id")
+            ));
+        }
+        return products;
+    }
+
     public List<Product> findProductByAnnoucerId(int id) throws SQLException {
         query = "SELECT * FROM products WHERE id_product = ?";
         List<Product> products = new ArrayList<>();
@@ -248,5 +268,17 @@ public class DbService {
             );
         }
         return user;
+    }
+
+    public void addUser(String email, String password, String lname, String fname, boolean type_expert) throws SQLException {
+        query = "INSERT INTO users (email, password, last_name, first_name, type_expert) " +
+                "VALUES (?, ?, ?, ?, ?);";
+        PreparedStatement stmt = db.getCon().prepareStatement(query);
+        stmt.setString(1,email);
+        stmt.setString(2,password);
+        stmt.setString(3,lname);
+        stmt.setString(4,fname);
+        stmt.setBoolean(5,type_expert);
+        stmt.executeUpdate();
     }
 }
