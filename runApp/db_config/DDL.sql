@@ -61,6 +61,46 @@ create table estimations (
                              constraint unique_estimation unique (expert_id, product_id)
 );
 
+create or replace function offer_status()
+	return trigger as $$
+	declare
+	min_estimation numeric;
+begin
+	
+	if exists (                                     -- Vérifier si le produit est sold ou active
+		select 1 from products
+		where id_product = new.product_id
+		and status = 'sold'
+	) then
+		raise exception 'Product already sold';
+	end if;
+
+	new.status := 'pending';    -- Toujours commencer en pending (forcé)
+
+	select min(estimate)        -- Estimation minimale
+	into min_estimation
+	from estimations
+	where product_id = new.product_id;
+
+	if min_estimation is not null and new.price >= min_estimation then     -- Vérifier la condition d'acceptation
+		update offers                       -- Mettre toutes les offres 'declined'
+		set status = 'declined'             
+		where product_id = new.product_id;
+
+		new.status := 'accepted'            -- Offre actuelle : Acceptée
+
+		update products
+		set status = 'sold'
+		where id_product = new.product_id;
+
+	end if;
+
+	return new;
+end;
+$$ language plpgsql;
+
+		
+
 -- Indexes --
 create unique index one_accepted_offer_per_product    -- Une seule offre acceptée par produit --
     on offers(product_id)
