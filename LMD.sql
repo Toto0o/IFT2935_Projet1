@@ -200,12 +200,14 @@ FROM generate_series(1, 100) AS gs;
 
 -- Simple queries
 
+set search_path to project;
+
 -- affiche les produits dont le prix demandé est supérieur à 500.
-SELECT * FROM products WHERE price>500;
+SELECT * FROM products WHERE wanted_price>500;
 -- affiche les offres avec un prix inférieur à 300.
 SELECT * FROM offers WHERE price<300;
 -- affiche les estimations supérieures à 400.
-SELECT * FROM estimates WHERE estimate>400;
+SELECT * FROM estimations WHERE estimate>400;
 -- affiche les produits dans la catégorie électronique.
 SELECT * FROM products WHERE category='ELECTRONICS';
 
@@ -219,9 +221,9 @@ FROM users u
          JOIN estimations e ON e.product_id = p.id_product;
 
 -- nombre d'offres par produit
-SELECT p.title, COUNT(o.id)
+SELECT p.title, COUNT(o.id_offer)
 FROM products p
-         JOIN offers o ON p.id=o.productId
+         JOIN offers o ON p.id_product=o.product_id
 GROUP BY p.title;
 
 -- Prix moyen des offres faites par chaque utilisateur.
