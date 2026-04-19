@@ -19,12 +19,15 @@ else
     echo "User 'myappuser' created and granted privileges on 'kijiji'."
 fi
 
+<<<<<<< HEAD
+=======
 ### MODIFICATIONS - ALICIA
 psql -c "GRANT ALL PRIVILEGES ON DATABASE kijiji TO myappuser;"   # AJOUT DE GRANT MÊME SI LE USER EXISTE
 psql -d kijiji -c "GRANT ALL ON SCHEMA public TO myappuser;"
 psql -d kijiji -c "ALTER SCHEMA public OWNER TO myappuser;"
 ### FIN MODIFICATION - ALICIA
 
+>>>>>>> 89d07eeea4b981cefcfa0e736e4c26402a4eed63
 echo "Running database setup DDL.sql script..."
 # Run the DDL.sql script to set up the database schema
 psql -U myappuser -d kijiji -f /db_config/DDL.sql
@@ -33,6 +36,19 @@ echo "Filling database with intial data from inserts.sql script..."
 # Run the inserts.sql script to populate the database with initial data
 echo "Filling database with users..."
 psql -U myappuser -d kijiji -f /db_config/inserts_users.sql
+<<<<<<< HEAD
+
+echo "Filling database with products..."
+psql -U myappuser -d kijiji -f /db_config/inserts_products.sql
+
+echo "Filling database with offers..."
+psql -U myappuser -d kijiji -f /db_config/inserts_offers.sql
+
+echo "Filling database with estimations..."
+psql -U myappuser -d kijiji -f /db_config/inserts_estimations.sql
+
+echo "Database setup completed successfully."
+=======
 # psql -U myappuser -d kijiji -f db_config/insert_users.sql     MODIFICATION - ALICIA
 
 echo "Filling database with products..."
@@ -48,3 +64,4 @@ psql -U myappuser -d kijiji -f /db_config/inserts_estimations.sql
 #3 psql -U myappuser -d kijiji -f db_config/insert_estimations.sql     MODIFICATION - ALICIA
 
 echo "Database setup completed successfully."
+>>>>>>> 89d07eeea4b981cefcfa0e736e4c26402a4eed63
