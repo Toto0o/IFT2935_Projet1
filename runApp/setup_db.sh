@@ -1,0 +1,40 @@
+echo "Setting up the database..."
+
+# Check if the database already exists
+if psql -U postgres -lqt | cut -d \| -f 1 | grep -qw "myappdb"; then
+    echo "Database 'myappdb' already exists. Skipping creation."
+else
+    # Create the database
+    createdb -U postgres kijiji
+    echo "Database 'kijiji' created successfully."
+fi
+
+# Check if the user already exists
+if psql -U postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='myappuser'" | grep -q 1; then
+    echo    "User 'myappuser' already exists. Skipping creation."
+else
+    # Create the user and grant privileges
+    psql -U postgres -c "CREATE USER myappuser WITH PASSWORD 'password';"
+    psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE kijiji TO myappuser;"
+    echo "User 'myappuser' created and granted privileges on 'kijiji'."
+fi
+
+echo "Running database setup DDL.sql script..."
+# Run the DDL.sql script to set up the database schema
+psql -U myappuser -d kijiji -f /db_config/DDL.sql
+
+echo "Filling database with intial data from inserts.sql script..."
+# Run the inserts.sql script to populate the database with initial data
+echo "Filling database with users..."
+psql -U myappuser -d kijiji -f /db_config/inserts_users.sql
+
+echo "Filling database with products..."
+psql -U myappuser -d kijiji -f /db_config/inserts_products.sql
+
+echo "Filling database with offers..."
+psql -U myappuser -d kijiji -f /db_config/inserts_offers.sql
+
+echo "Filling database with estimations..."
+psql -U myappuser -d kijiji -f /db_config/inserts_estimations.sql
+
+echo "Database setup completed successfully."
