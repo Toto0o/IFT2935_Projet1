@@ -1,5 +1,5 @@
 begin transaction;
-create schema project;
+create schema if not exists project;
 set search_path to project;
 
 -- User table --
@@ -28,7 +28,7 @@ create table products (
                           description varchar(500) not null check (trim(description) <> ''),
                           state_ text not null check (state_ in ('new', 'like new', 'used', 'as is')),
                           status text not null check (status in ('active', 'sold')) default 'active',
-                          category text not null check (category in ('cars', 'real estate', 'pets', 'services')),
+                          category text not null check (category in ('cars', 'real estate', 'pets', 'services', 'electronics','furniture','fashion','sports')),
                           wanted_price numeric(10,2) not null check (wanted_price > 0),  -- Prix à 2 décimales --
                           announcer_id int not null,
                           foreign key (announcer_id) references users(id_user) on delete cascade
