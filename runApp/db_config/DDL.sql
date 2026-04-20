@@ -68,11 +68,11 @@ create or replace function offer_status()
 begin
 	
 	if exists (                                     -- Vérifier si le produit est sold ou active
-		select 1 from products
-		where id_product = new.product_id
-		and status = 'sold'
+	    select 1 from products
+	    where id_product = new.product_id
+	    and status = 'sold'
 	) then
-		raise exception 'Product already sold';
+	    return null; -- ignore l'insertion
 	end if;
 
 	new.status := 'pending';    -- Toujours commencer en pending (forcé)
@@ -99,6 +99,10 @@ begin
 end;
 $$ language plpgsql;
 
+create trigger trigger_offer_status
+before insert on offers
+for each row
+execute function offer_status();
 		
 
 -- Indexes --
