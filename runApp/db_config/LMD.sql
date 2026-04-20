@@ -53,7 +53,7 @@ SELECT u.first_name, p.title, o.price, e.estimate
                          JOIN offers o ON u.id_user = o.user_id
                          JOIN products p ON p.id_product = o.product_id
                          JOIN estimations e ON e.product_id = p.id_product
-                WHERE e.decision = TRUE AND o.status = 'accepted'
+                WHERE e.decision = TRUE AND o.status = 'accepted';
 
 -- Simple querys --
 
