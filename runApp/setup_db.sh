@@ -1,8 +1,8 @@
 echo "Setting up the database..."
 
 # Check if the database already exists
-if psql -U postgres -lqt | cut -d \| -f 1 | grep -qw "myappdb"; then
-    echo "Database 'myappdb' already exists. Skipping creation."
+if psql -U postgres -lqt | cut -d \| -f 1 | grep -qw "kijiji"; then
+    echo "Database 'kijiji' already exists. Skipping creation."
 else
     # Create the database
     createdb -U postgres kijiji
