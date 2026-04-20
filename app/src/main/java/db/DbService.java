@@ -321,7 +321,7 @@ public class DbService {
         ResultSet rs = stmt.executeQuery();
         int id = -1;
         while (rs.next()) {
-            id = rs.getInt("est_id");
+            id = rs.getInt("id_est");
         }
         return id;
     }
@@ -339,12 +339,14 @@ public class DbService {
     }
 
     public void addNewOffer(Offer offer) throws SQLException {
-        query = "INSERT INTO offers (price, msg, status, user_id) VALUES (?,?,?,?);)";
+        query = "INSERT INTO offers (price, msg, status, user_id, product_id) VALUES (?,?,?,?,?);";
         PreparedStatement stmt = db.getCon().prepareStatement(query);
         stmt.setDouble(1, offer.getPrice());
         stmt.setString(2, offer.getMessage());
         stmt.setString(3, offer.getStatus().toString());
         stmt.setInt(4, offer.getBuyerId());
+        stmt.setInt(5, offer.getProductId());
+        stmt.executeUpdate();
     }
 
     public List<Offer> findOffersByUserId(int userId) throws SQLException {
