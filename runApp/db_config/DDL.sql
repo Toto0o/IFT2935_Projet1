@@ -62,7 +62,7 @@ create table estimations (
 );
 
 create or replace function offer_status()
-	return trigger as $$
+	returns trigger as $$
 	declare
 	min_estimation numeric;
 begin
@@ -87,7 +87,7 @@ begin
 		set status = 'declined'             
 		where product_id = new.product_id;
 
-		new.status := 'accepted'            -- Offre actuelle : Acceptée
+		new.status := 'accepted';            -- Offre actuelle : Acceptée
 
 		update products
 		set status = 'sold'
