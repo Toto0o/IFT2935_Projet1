@@ -23,8 +23,8 @@ fi
 =======
 ### MODIFICATIONS - ALICIA
 psql -c "GRANT ALL PRIVILEGES ON DATABASE kijiji TO myappuser;"   # AJOUT DE GRANT MÊME SI LE USER EXISTE
-psql -d kijiji -c "GRANT ALL ON SCHEMA public TO myappuser;"
-psql -d kijiji -c "ALTER SCHEMA public OWNER TO myappuser;"
+psql -d kijiji -c "GRANT ALL ON SCHEMA project TO myappuser;"
+psql -d kijiji -c "ALTER SCHEMA project OWNER TO myappuser;"
 ### FIN MODIFICATION - ALICIA
 
 >>>>>>> 89d07eeea4b981cefcfa0e736e4c26402a4eed63
