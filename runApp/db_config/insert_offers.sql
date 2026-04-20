@@ -1,27 +1,35 @@
 SET search_path TO project;
 
-WITH candidate_pairs AS (
+WITH product_users AS (
     SELECT
-        u.id_user AS user_id,
-        p.id_product AS product_id
-    FROM users u
-             CROSS JOIN products p
-    WHERE u.type_expert = false
+        p.id_product,
+        u.id_user
+    FROM products p
+    JOIN users u ON u.type_expert = false
 ),
-     sampled_pairs AS (
-         SELECT *
-         FROM candidate_pairs
-         ORDER BY random()
-    LIMIT 100
-    ),
-    base_offers AS (
-SELECT
-    sp.user_id,
-    sp.product_id,
-    (random() * 20000 + 50)::int AS price,
-    'Offer ' || row_number() OVER () AS msg
-FROM sampled_pairs sp
-    )
+sampled AS (
+    SELECT DISTINCT ON (id_product)
+        id_product,
+        id_user
+    FROM product_users
+    ORDER BY id_product, random()
+),
+offers_per_product AS (
+    SELECT
+        s.id_product,
+        s.id_user,
+        gs AS offer_num
+    FROM sampled s
+    CROSS JOIN generate_series(1,3) AS gs
+),
+base_offers AS (
+    SELECT
+        opp.id_user,
+        opp.id_product,
+        (random() * 20000 + 50)::int AS price,
+        'Offer ' || row_number() OVER () AS msg
+    FROM offers_per_product opp
+)
 INSERT INTO offers (price, msg, user_id, product_id)
 SELECT
     price,
@@ -29,13 +37,6 @@ SELECT
     user_id,
     product_id
 FROM base_offers bo
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM offers o
-    WHERE o.user_id = bo.user_id
-      AND o.product_id = bo.product_id
-      AND o.price = bo.price
-)
-    ON CONFLICT (user_id, product_id, price) DO NOTHING;
+ON CONFLICT (user_id, product_id, price) DO NOTHING;
 
-SELECT * from offers;
+SELECT * FROM offers;
