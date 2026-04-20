@@ -7,24 +7,24 @@ import java.io.Serializable;
 
 public class UserProductsEstimate implements DTO<UserProductsEstimate> {
 
-    private String userName;
+    private String firstName;
     private String productName;
     private double price;
     private double estimate;
 
-    public UserProductsEstimate(String userName, String productName, double price, double estimate) {
-        this.userName = userName;
+    public UserProductsEstimate(String firstName, String productName, double price, double estimate) {
+        this.firstName = firstName;
         this.productName = productName;
         this.price = price;
         this.estimate = estimate;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
     public String getProductName() {
         return productName;
@@ -50,8 +50,8 @@ public class UserProductsEstimate implements DTO<UserProductsEstimate> {
     @Override
     public TableColumn<UserProductsEstimate, ?>[] getTableColumns() {
         TableColumn<UserProductsEstimate, ?>[] columns = new TableColumn[4];
-        columns[0] = new TableColumn<UserProductsEstimate, String>("userName");
-        columns[0].setCellValueFactory(new PropertyValueFactory<>("username"));
+        columns[0] = new TableColumn<UserProductsEstimate, String>("First name");
+        columns[0].setCellValueFactory(new PropertyValueFactory<>("firstName"));
         columns[1] = new TableColumn<UserProductsEstimate, String>("productName");
         columns[1].setCellValueFactory(new PropertyValueFactory<>("productName"));
         columns[2] = new TableColumn<UserProductsEstimate, Double>("price");
