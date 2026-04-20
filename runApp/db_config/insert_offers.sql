@@ -32,10 +32,10 @@ base_offers AS (
 )
 INSERT INTO offers (price, msg, user_id, product_id)
 SELECT
-    price,
-    msg,
-    user_id,
-    product_id
+    bo.price,
+    bo.msg,
+    bo.id_user,
+    bo.id_product
 FROM base_offers bo
 ON CONFLICT (user_id, product_id, price) DO NOTHING;
 
