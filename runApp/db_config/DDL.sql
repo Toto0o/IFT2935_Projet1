@@ -81,7 +81,7 @@ begin
 	into min_estimation
 	ffrom estimations
 	where product_id = new.product_id
-	and decision = true;
+	and decision = true;        -- Assure que l'estimation est acceptée par le vendeur
 
 	if min_estimation is not null and new.price >= min_estimation then     -- Vérifier la condition d'acceptation
 		update offers                       -- Mettre toutes les offres 'declined'
