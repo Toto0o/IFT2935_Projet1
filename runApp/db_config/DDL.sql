@@ -79,8 +79,9 @@ begin
 
 	select min(estimate)        -- Estimation minimale
 	into min_estimation
-	from estimations
-	where product_id = new.product_id;
+	ffrom estimations
+	where product_id = new.product_id
+	and decision = true;
 
 	if min_estimation is not null and new.price >= min_estimation then     -- Vérifier la condition d'acceptation
 		update offers                       -- Mettre toutes les offres 'declined'
